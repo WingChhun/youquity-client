@@ -1,7 +1,7 @@
-@import '../vars/colors';
 @import '../mixins/layout';
+@import '../mixins/colorCombos';
 
 .page-footer {
-    background-color: $dark;
+    @include lightOnDark;
     @include container;
 }

@@ -1,7 +1,7 @@
-@import '../vars/colors';
 @import '../mixins/layout';
+@import '../mixins/colorCombos';
 
 .top-nav {
     @include container;
-    background-color: $medium;
+    @include darkOnMedium;
 }
