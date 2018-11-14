@@ -1,0 +1,7 @@
+@import '../vars/colors';
+@import '../mixins/layout';
+
+.page-header {
+    background-color: $dark;
+    @include container;
+}

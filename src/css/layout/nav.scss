@@ -1,0 +1,7 @@
+@import '../vars/colors';
+@import '../mixins/layout';
+
+.top-nav {
+    @include container;
+    background-color: $medium;
+}
