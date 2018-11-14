@@ -1,7 +1,7 @@
 @import '../mixins/layout';
-@import '../mixins/colorCombos';
+@import '../mixins/setColors';
 
 .page-footer {
-    @include lightOnDark;
+    @include setColors(dark, light);
     @include container;
 }

@@ -1,0 +1,6 @@
+@import '../vars/colors';
+
+@mixin setColors($background, $foreground) {
+    background-color: map-get($colors, $background);
+    color: map-get($colors, $foreground);
+}

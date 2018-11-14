@@ -1,7 +1,8 @@
 @import '../mixins/layout';
 @import '../mixins/setColors';
 
-.page-header {
+.main-container {
     @include container;
-    @include setColors(dark, light);
+    @include setColors(white, dark);
+    flex-grow: 1;
 }

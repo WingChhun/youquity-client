@@ -1,0 +1,7 @@
+@import '../mixins/layout';
+
+.wrapper {
+    @include flex(true);
+    min-height: 100%;
+    flex-grow: 1;
+}

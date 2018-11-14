@@ -2,13 +2,15 @@
 @import './base/reset';
 @import './base/typography';
 
+// Mixins
+@import './mixins/layout';
+
 * {
   box-sizing: border-box;
 }
 
-body {
+body, #root {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   margin: 0;
+  @include flex(true);
 }
