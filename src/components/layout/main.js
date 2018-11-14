@@ -1,12 +1,15 @@
 import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
+import InvestorDashboard from '../views/investor/investorDashboard';
 
 import '../../css/layout/main.scss';
 
 export default function Main() {
     return (
-        <main className="main-container">
-            Main
-        </main>
+        <Router>
+            <Route exact path="/" component={InvestorDashboard} />
+        </Router>
     );
 }
 
