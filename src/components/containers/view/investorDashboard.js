@@ -5,19 +5,11 @@ import InvestmentDetailCard from '../../display/investmentDetailCard';
 import '../../../css/components/containers/view/investorDashboard.scss';
 
 export default function InvestorDashboard(props) {
-    // const cardData = props.cardData;
-    console.log(props.cardData);
     const cards = props.cardData.map((card, index) =>{
         return(
             <InvestmentDetailCard
                 key={index}
-                companyName={card.companyName}
-                totalInvestment={card.totalInvestment}
-                avgPricePerShare={card.avgPricePerShare}
-                numShares={card.numShares}
-                currentValuation={card.currentValuation}
-                currentValPerShare={card.currentValPerShare}
-                netChange={card.netChange}
+                data={card}
             />
         )
     });
