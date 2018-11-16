@@ -83,12 +83,31 @@ const investmentCards = [
     },
 ];
 
+const summaryData = [
+    {
+        label: 'Total Amount Invested',
+        data: '$100,000'
+    },
+    {
+        label: '# of Companies Invested In',
+        data: 3
+    },
+    {
+        label: 'Current Valuation',
+        data: '$123,000'
+    },
+    {
+        label: 'Net Gain/Loss',
+        data: '+$23,000'
+    }
+];
+
 export default function Main() {
     return (
         <Router>
             <Route
             exact path='/'
-            render={(props) => <InvestorDashboard {...props} cardData={investmentCards} />}
+            render={(props) => <InvestorDashboard {...props} cardData={investmentCards} summaryData={summaryData} />}
         />
         </Router>
     );

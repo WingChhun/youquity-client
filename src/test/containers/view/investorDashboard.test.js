@@ -3,38 +3,105 @@ import {shallow} from 'enzyme';
 
 import InvestorDashboard from '../../../components/containers/view/investorDashboard';
 
-const cards = [
+const summaryData = [
     {
-        companyName: 'Company A',
-        totalInvestment: '$50,000',
-        avgPricePerShare: '$10.00',
-        numShares: '5,000',
-        currentValuation: '$55,000',
-        currentValPerShare: '$11.00',
-        netChange: '+$5,000'
+        label: 'Total Amount Invested',
+        data: '$100,000'
     },
     {
-        companyName: 'Company B',
-        totalInvestment: '$40,000',
-        avgPricePerShare: '$1.00',
-        numShares: '40,000',
-        currentValuation: '$32,000',
-        currentValPerShare: '$0.80',
-        netChange: '-$8,000'
+        label: '# of Companies Invested In',
+        data: 3
     },
     {
-        companyName: 'Company C',
-        totalInvestment: '$10,000',
-        avgPricePerShare: '$2.00',
-        numShares: '5,000',
-        currentValuation: '$36,000',
-        currentValPerShare: '$7.20',
-        netChange: '+$26,000'
+        label: 'Current Valuation',
+        data: '$123,000'
+    },
+    {
+        label: 'Net Gain/Loss',
+        data: '+$23,000'
     }
+];
+
+const investmentCards = [
+    {
+        cardTitle: 'Company A',
+        cardData: [
+            {
+                label: 'Total investment in Company A',
+                data: '$50,000'
+            },
+            {
+                label: 'Average Price Per Share',
+                data: '$10.00'
+            },
+            {
+                label: '# of Shares',
+                data: '5,000'
+            },
+            {
+                label: 'Current Valuation',
+                data: '$55,000 ($11.00/share)'
+            },
+            {
+                label: 'Net Gain/Loss',
+                data: '+$5,000'
+            }
+        ]
+    },
+    {
+        cardTitle: 'Company B',
+        cardData: [
+            {
+                label: 'Total investment in Company B',
+                data: '$40,000'
+            },
+            {
+                label: 'Average Price Per Share',
+                data: '$1.00'
+            },
+            {
+                label: '# of Shares',
+                data: '40,000'
+            },
+            {
+                label: 'Current Valuation',
+                data: '$32,000 ($0.80/share)'
+            },
+            {
+                label: 'Net Gain/Loss',
+                data: '-$8,000'
+            }
+        ]
+    },
+    {
+        cardTitle: 'Company C',
+        cardData: [
+            {
+                label: 'Total investment in Company C',
+                data: '$10,000'
+            },
+            {
+                label: 'Average Price Per Share',
+                data: '$2.00'
+            },
+            {
+                label: '# of Shares',
+                data: '5,000'
+            },
+            {
+                label: 'Current Valuation',
+                data: '$36,000 ($7.20/share)'
+            },
+            {
+                label: 'Net Gain/Loss',
+                data: '+$26,000'
+            }
+        ]
+    },
 ];
 
 describe('<InvestorDashboard />', () => {
     it('Renders without crashing.', () => {
-        shallow(<InvestorDashboard cardData={cards} />);
+        shallow(<InvestorDashboard summaryData={summaryData} cardData={investmentCards} />);
     });
 });
