@@ -1,8 +1,0 @@
-@import '../mixins/layout';
-@import '../mixins/setColors';
-
-.main-container {
-    @include container;
-    @include setColors(white, dark);
-    flex-grow: 1;
-}

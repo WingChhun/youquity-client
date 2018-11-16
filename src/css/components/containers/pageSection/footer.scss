@@ -1,0 +1,7 @@
+@import '../../../helpers/mixins/layout';
+@import '../../../helpers/mixins/setColors';
+
+.page-footer {
+    @include setColors(dark, light);
+    @include container;
+}

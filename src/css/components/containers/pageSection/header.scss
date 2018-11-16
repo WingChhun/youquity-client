@@ -1,0 +1,7 @@
+@import '../../../helpers/mixins/layout';
+@import '../../../helpers/mixins/setColors';
+
+.page-header {
+    @include container;
+    @include setColors(dark, light);
+}

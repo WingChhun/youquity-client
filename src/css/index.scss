@@ -1,9 +1,9 @@
 // Reset and Base
-@import './base/reset';
-@import './base/typography';
+@import './helpers/base/reset';
+@import './helpers/base/typography';
 
 // Mixins
-@import './mixins/layout';
+@import './helpers/mixins/layout';
 
 * {
   box-sizing: border-box;

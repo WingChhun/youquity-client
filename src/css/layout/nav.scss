@@ -1,7 +1,0 @@
-@import '../mixins/layout';
-@import '../mixins/setColors';
-
-.top-nav {
-    @include container;
-    @include setColors(medium, dark);
-}

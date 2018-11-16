@@ -1,0 +1,27 @@
+@import '../../helpers/vars/colors';
+
+.data-list-element {
+    list-style-type:none;
+    display: inline;
+    width: 100%;
+    margin: 3px auto;
+    padding: 10px;
+    display: flex;
+    align-items: space-between;
+    &:nth-child(odd) {
+        background-color: $light;
+    }
+    .list-element-label, .list-element-data {
+        font-weight: bold;
+        display: inline-block;
+        flex-grow: 1;
+    }
+    .list-element-label {
+        text-align: left;
+        width: 60%;
+    }
+    .list-element-data {
+        width: 40%;
+        text-align: right;
+    }
+}
