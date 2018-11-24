@@ -22,7 +22,7 @@ export default function InvestorDashboard(props) {
     });
 
     return (
-        <main className="main-container">
+        <div className="investor-dashboard-container">
             <section className="investor-summary">
                 <ul>
                     {summary}
@@ -31,6 +31,6 @@ export default function InvestorDashboard(props) {
             <section className="investment-details">
                 {cards}
             </section>
-        </main>
+        </div>
     );
 }

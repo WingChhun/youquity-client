@@ -1,8 +1,9 @@
 @import '../../helpers/vars/colors';
+@import '../../helpers/mixins/setColors';
 
 .investment-detail-card {
     margin: 15px 15px 0;
-    border: 2px solid $dark;
+    border: 2px solid map-get($colors, dark);
     padding: 15px;
     &:last-child {
         margin: 15px;
@@ -10,8 +11,9 @@
     .detail-card-header,
     .detail-card-footer {
         padding: 15px;
-        background-color: $medium;
+        background-color: map-get($colors, medium);
         color: black;
+        @include setColors(medium, black);
     }
     .detail-card-header .detail-card-title {
         font-size: 1.3em;
