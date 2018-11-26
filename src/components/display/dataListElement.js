@@ -11,7 +11,7 @@ function constructLink(anchor, href) {
 function DataElement(props) {
     return(
         <span className="list-element-data">
-            {props.isLink ? constructLink(props.data, props.href) : props.data}
+            {props.href ? constructLink(props.data, props.href) : props.data}
         </span>
     );
 }

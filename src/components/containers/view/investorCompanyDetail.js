@@ -5,7 +5,7 @@ import DataListElement from '../../display/dataListElement';
 
 import '../../../css/components/containers/view/investorCompanyDetail.scss';
 
-export default function investorCompanyDetail(props) {
+export default function InvestorCompanyDetail(props) {
     const summary = props.summaryData.summaryDetail.map((line, i) => {
         return(
             <DataListElement 
@@ -23,7 +23,7 @@ export default function investorCompanyDetail(props) {
                 data={card}
             />
         );
-    })
+    });
 
     return (
         <div className="investor-company-detail-container">

@@ -126,7 +126,6 @@ export const companyDetailData = {
                 {
                     label: 'Stock Class',
                     data: 'Preferred',
-                    isLink: true,
                     href: '#'
                 },
                 {
@@ -153,7 +152,6 @@ export const companyDetailData = {
                 {
                     label: 'Stock Class',
                     data: 'Class A',
-                    isLink: true,
                     href: '#'
                 },
                 {
