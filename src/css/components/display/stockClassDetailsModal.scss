@@ -1,0 +1,63 @@
+@import '../../helpers/vars/colors';
+@import '../../helpers//mixins/setColors';
+@import '../../helpers/mixins/layout';
+.modal-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    position: absolute;
+    top: 3vw;
+    left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 3vw;
+    border: 3px solid black;
+    width: calc(100vw - 6vw - 6px);
+    min-height: calc(100vh - 6vw - 6px);
+    @include flex(true);
+    .modal-header {
+        @include container;
+        @include setColors(dark, light);
+        .heading {
+            @include setColors(dark, light);
+        }
+        .button-wrapper {
+            @include flex;
+            justify-content: flex-end;
+        }
+    }
+    .modal-details {
+        @include container;
+        flex-grow: 1;
+        background-color: lightgray;
+        .detail-list {
+            border-bottom: 1px solid map-get($colors, dark);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .heading {
+            font-size: 1.5em;
+            text-align: left;
+            padding: 0 10px;
+            margin-bottom: 5px;
+        }
+        .data-list-element {
+            .list-element-label {
+                min-width: 175px;
+            }
+            .list-element-data {
+                min-width: 115px;
+            }
+        }
+        .other-details {
+            padding: 0 10px;
+            margin-top: 10px;
+            text-align: left;
+        }
+    }
+}

@@ -174,3 +174,39 @@ export const companyDetailData = {
         }
     ],
 };
+
+export const modalData = {
+    stockClass: 'Preferred',
+    companyName: 'Company A',
+    detailList: [
+        {
+            label: 'Share Type',
+            data: 'Preferred',
+        },
+        {
+            label: 'Par Value',
+            data: '$0.80/share'
+        },
+        {
+            label: 'Dividend Preference',
+            data: 'Yes'
+        },
+        {
+            label: 'Dividend Ratio',
+            data: '8%'
+        },
+        {
+            label: 'Convertible',
+            data: 'Yes'
+        },
+        {
+            label: 'Conversion Ratio',
+            data: '7:1'
+        },
+        {
+            label: 'Voting Rights',
+            data: 'No'
+        }
+    ],
+    otherDetails: 'Liquidation preference prior to Common Stock.  Cancelled shares may not be reissued.'
+};
