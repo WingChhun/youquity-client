@@ -11,16 +11,18 @@ function constructLink(anchor, href) {
 function DataElement(props) {
     return(
         <span className="list-element-data">
-            {props.href ? constructLink(props.data, props.href) : props.data}
+            {props.data.href ? constructLink(props.data.data, props.data.href) : props.data.data}
         </span>
     );
 }
 
 export default function DataListElement(props) {
+
+    console.log(props.data);
     return (
         <li className="data-list-element">
-            <span className="list-element-label">{props.label}:</span>
-            <DataElement {...props} />
+            <span className="list-element-label">{props.data.label}:</span>
+            <DataElement data={props.data} />
         </li>
     );
 }

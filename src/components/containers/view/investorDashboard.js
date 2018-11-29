@@ -17,7 +17,7 @@ export default function InvestorDashboard(props) {
 
     const summary = props.summaryData.map((line, i) => {
         return(
-            <DataListElement key={i} label={line.label} data={line.data} />
+            <DataListElement key={i} data={line} />
         );
     });
 

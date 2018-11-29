@@ -10,8 +10,7 @@ export default function InvestorCompanyDetail(props) {
         return(
             <DataListElement 
                 key={i}
-                label={line.label}
-                data={line.data}
+                data={line}
             />
         );
     });

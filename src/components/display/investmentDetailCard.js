@@ -6,7 +6,7 @@ import '../../css/components/display/investmentDetailCard.scss';
 
 export default function InvestmentDetailCard(props) {
     const details = props.data.cardData.map((line, i) => {
-        return <DataListElement key={i} {...line} />;
+        return <DataListElement key={i} data={line} />;
     });
     return (
         <article className="investment-detail-card">
