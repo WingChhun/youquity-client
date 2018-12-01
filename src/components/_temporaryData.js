@@ -118,6 +118,28 @@ export const companyDetailData = {
             }
         ],
         aboutText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin leo vitae risus scelerisque convallis. Nullam at turpis dolor. Curabitur ornare ex et elit elementum fermentum. Proin elementum augue vel sem commodo aliquam. Nunc vitae justo a sapien blandit porta. In id justo dapibus, finibus ante id, vehicula enim. Donec rutrum sapien eget tempus ultricies. Nullam condimentum imperdiet ullamcorper. Cras lobortis semper eros quis gravida. Nulla hendrerit, mi quis tincidunt sodales, lectus mi rutrum nulla, at pharetra leo augue non leo. Curabitur cursus lobortis ex, in auctor dolor molestie ac. Proin egestas placerat enim vitae ornare.',
+        myHoldings: [
+            {
+                label: 'My Total Investment in Company A',
+                data: '$50,000'
+            },
+            {
+                label: 'Average Price Per Share',
+                data: '$10.00'
+            },
+            {
+                label: '# of Shares',
+                data: '5,000'
+            },
+            {
+                label: 'Current Valuation',
+                data: '$55,000 ($11.00/share)'
+            },
+            {
+                label: 'Net Gain/Loss',
+                data: '+$5,000'
+            }
+        ]
     },
     certificates: [
         {
@@ -209,4 +231,20 @@ export const modalData = {
         }
     ],
     otherDetails: 'Liquidation preference prior to Common Stock.  Cancelled shares may not be reissued.'
+};
+
+export const purchaseFormData = {
+    companyName: 'Company A',
+    availableTypes: [
+        {
+            typeSlug: 'classA',
+            typeName: 'Class A',
+            typePricePerShare: '$3.50'
+        },
+        {
+            typeSlug: 'preferred',
+            typeName: 'Preferred',
+            typePricePerShare: '$7.00'
+        }
+    ]
 };
