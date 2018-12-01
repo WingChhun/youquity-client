@@ -34,7 +34,7 @@
     .modal-details {
         @include container;
         flex-grow: 1;
-        background-color: lightgray;
+        background-color: map-get($colors, light);
         .detail-list {
             border-bottom: 1px solid map-get($colors, dark);
             padding-bottom: 20px;

@@ -2,6 +2,7 @@ import React from 'react';
 
 import InvestmentDetailCard from '../../display/investmentDetailCard';
 import DataListElement from '../../display/dataListElement';
+import StockClassDetailsModal from '../../display/stockClassDetailsModal';
 
 import '../../../css/components/containers/view/investorCompanyDetail.scss';
 
@@ -46,6 +47,7 @@ export default function InvestorCompanyDetail(props) {
                         {cards}    
                     </section>
             </section>
+            <StockClassDetailsModal data={props.modalData} />
         </div>
     );
 }

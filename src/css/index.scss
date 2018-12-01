@@ -15,3 +15,7 @@ body, #root {
   margin: 0;
   @include flex(true);
 }
+
+.hidden {
+  display: none;
+}

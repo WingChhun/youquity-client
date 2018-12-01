@@ -16,7 +16,7 @@ export default function StockClassDetailsModal(props) {
     });
     
     return (
-        <div className="modal-wrapper">
+        <div className="modal-wrapper hidden">
             <section className="modal">
                 <header className="modal-header">
                     <div className="button-wrapper">

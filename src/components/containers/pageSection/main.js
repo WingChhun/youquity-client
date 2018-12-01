@@ -20,7 +20,8 @@ export default function Main() {
                     />
                     <Route
                         exact path='/investorCompanyDetail'
-                        render={(props) => <InvestorCompanyDetail {...props} companyName={companyDetailData.companyName} summaryData={companyDetailData.summaryData} certificates={companyDetailData.certificates} />}
+                        render={(props) => <InvestorCompanyDetail {...props} companyName={companyDetailData.companyName} summaryData={companyDetailData.summaryData} certificates={companyDetailData.certificates}
+                        modalData={modalData} />}
                     />
                     <Route
                         exact path='/'
