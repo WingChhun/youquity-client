@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import InvestorDashboard from '../view/investorDashboard';
 import InvestorCompanyDetail from '../view/investorCompanyDetail';
 import CompanyProfile from '../view/companyProfile';
+import IssueShares from '../view/issueShares';
 
 import { dashboardData, companyDetailData, modalData, purchaseFormData, companyProfileData } from '../../_temporaryData';
 
@@ -25,8 +26,12 @@ export default function Main() {
                         purchaseFormData={purchaseFormData} />}
                     />
                     <Route
-                        exact path='/'
+                        exact path='/companyProfile'
                         render={(props) => <CompanyProfile {...props} data={companyProfileData} />}
+                    />
+                    <Route
+                        exact path='/'
+                        render={(props) => <IssueShares {...props} />}
                     />
                 </Switch>
             </Router>

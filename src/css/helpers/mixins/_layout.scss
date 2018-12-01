@@ -1,7 +1,13 @@
-@mixin container {
+@import '../vars/colors';
+
+@mixin container($border: false){
     width: 100%;
     padding: 20px;
     text-align: center;
+
+    @if $border {
+        border: 1px solid map-get($colors, light);
+    }
 }
 
 @mixin flex($column: false) {

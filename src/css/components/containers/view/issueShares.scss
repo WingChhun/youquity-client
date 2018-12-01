@@ -1,0 +1,23 @@
+@import '../../../helpers/mixins/layout';
+@import '../../../helpers/vars/colors';
+.issue-shares-start {
+    @include container(true);
+    @include flex(true);
+    text-align: left;
+    font-weight: bold;
+    color: map-get($colors, dark);
+    .form-input {
+        margin-bottom: 10px;
+    }
+    .checkbox-group {
+        @include container(true);
+        text-align: left;
+        margin-bottom: 10px;
+        justify-content: space-between;
+
+        .checkbox-container {
+            @include flex(true);
+            justify-content: space-between;
+        }
+    }
+}
