@@ -433,3 +433,27 @@ export const investmentListingData = {
         },
     ]
 };
+
+export const requestListData = {
+    shareType: 'Class A',
+    requests: [
+        {
+            shareholderName: 'Bob Shareholder',
+            sharesRequested: '10,000',
+            status: 'Requested',
+            href: '#'
+        },
+        {
+            shareholderName: 'Jill Shareholder',
+            sharesRequested: '25,000',
+            status: 'Pending',
+            href: '#'
+        },
+        {
+            shareholderName: 'Jim Shareholder',
+            sharesRequested: '5,000',
+            status: 'Pending',
+            href: '#'
+        },
+    ]
+};

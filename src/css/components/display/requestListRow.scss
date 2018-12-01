@@ -1,0 +1,11 @@
+@import '../../helpers/mixins/setColors';
+@import '../../helpers/vars/colors';
+.request-list-row {
+    @include setColors(white, dark);
+    .request-data {
+        padding: 5px;
+    }
+    &:nth-child(odd) {
+        background-color: map-get($colors, light);
+    }
+}

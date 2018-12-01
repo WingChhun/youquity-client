@@ -2,6 +2,7 @@ import React from 'react';
 
 import DataListElement from '../../display/dataListElement';
 import InvestmentDetailCard from '../../display/investmentDetailCard';
+import RequestListModal from '../../display/requestListModal';
 
 import '../../../css/components/containers/view/companyProfile.scss';
 
@@ -37,6 +38,7 @@ export default function CompanyProfile(props) {
             <section className="stock-types">
                 {stockSummaryCards}
             </section>
+            <RequestListModal data={props.requestListData} />
         </div>
     );
 }

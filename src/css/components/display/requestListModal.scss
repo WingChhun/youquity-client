@@ -1,0 +1,10 @@
+@import '../../helpers/mixins/layout';
+@import '../../helpers/mixins/setColors';
+.request-list-table {
+    @include container(true, true);
+    .request-list-column-header {
+        padding: 5px;
+        font-weight: bold;
+        @include setColors(dark, light);
+    }
+}

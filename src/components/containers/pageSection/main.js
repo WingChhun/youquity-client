@@ -7,7 +7,7 @@ import CompanyProfile from '../view/companyProfile';
 import IssueShares from '../view/issueShares';
 import InvestmentListing from '../view/investmentListing';
 
-import { dashboardData, companyDetailData, modalData, purchaseFormData, companyProfileData, investmentListingData } from '../../_temporaryData';
+import { dashboardData, companyDetailData, modalData, purchaseFormData, companyProfileData, investmentListingData, requestListData } from '../../_temporaryData';
 
 import '../../../css/components/containers/pageSection/main.scss';
 
@@ -27,15 +27,15 @@ export default function Main() {
                         purchaseFormData={purchaseFormData} />}
                     />
                     <Route
-                        exact path='/companyProfile'
-                        render={(props) => <CompanyProfile {...props} data={companyProfileData} />}
+                        exact path='/'
+                        render={(props) => <CompanyProfile {...props} data={companyProfileData} requestListData={requestListData} />}
                     />
                     <Route
                         exact path='/issueShares'
                         render={(props) => <IssueShares {...props} />}
                     />
                     <Route
-                        exact path='/'
+                        exact path='/investmentListing'
                         render={(props) => <InvestmentListing {...props} data={investmentListingData} />}
                     />
                 </Switch>
