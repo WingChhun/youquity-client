@@ -26,6 +26,16 @@ const card = {
             label: 'Net Gain/Loss',
             data: '+$5,000'
         }
+    ],
+    cardButtons: [
+        {
+            className: 'issue-stock-btn',
+            buttonText: 'Issue Shares'
+        },
+        {
+            className: 'view-issued-stock-btn',
+            buttonText: 'View Issued Stock'
+        }
     ]
 };
 

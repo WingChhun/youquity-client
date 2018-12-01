@@ -1,0 +1,6 @@
+@import '../../../helpers/vars/colors';
+
+.svg-inline--fa {
+    margin-left: 5px;
+    color: map-get($colors, medium);
+}
