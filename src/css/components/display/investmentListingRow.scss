@@ -1,0 +1,12 @@
+@import '../../helpers/mixins/setColors';
+@import '../../helpers/vars/colors';
+
+.investment-listing-row {
+    @include setColors(white, dark);
+    .investment-listing-data {
+        padding: 5px;
+    }
+    &:nth-child(odd) {
+        background-color: map-get($colors, light);
+    }
+}

@@ -1,0 +1,11 @@
+@import '../../../helpers/mixins/layout';
+@import '../../../helpers/mixins/setColors';
+
+.investment-listing-table {
+    @include container(true, true);
+    .investment-listing-column-heading {
+        padding: 5px;
+        font-weight: bold;
+        @include setColors(dark, light);
+    }
+}
