@@ -4,7 +4,9 @@ import formatSharesToIssue from './helpers/formatSharesToIssue';
 
 export const ADD_SHARE_CLASS = 'ADD_SHARE_CLASS';
 export const addShareClass = data => {
+    console.log(data);
     data = formatShareClass(data);
+    console.log(data);
     return({
         type: ADD_SHARE_CLASS,
         data

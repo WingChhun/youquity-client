@@ -256,11 +256,14 @@ const initialState = {
 };
 
 // TODO: figure out redirects
+// TODO: figure out how to update summary data on add share class
+// TODO: figure out how to update share class when adding pending shares
 
 export const investmentReducer = (state=initialState, action) => {
     const newState = {...state};
     switch(action.type) {
         case ADD_SHARE_CLASS:
+            newState.companyData.shareClasses = [...newState.companyData.shareClasses, action.data];
             return newState;
         case ISSUE_SHARES:
             newState.investmentData.issued = [...newState.investmentData.issued, action.data];
