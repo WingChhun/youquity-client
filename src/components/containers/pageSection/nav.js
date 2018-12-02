@@ -36,7 +36,7 @@ export class Nav extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-    links: state.navData
+    links: state.investment.navData
 });
 
 export default connect(mapStateToProps)(Nav);

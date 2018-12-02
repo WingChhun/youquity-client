@@ -3,6 +3,9 @@
 @import './helpers/base/typography';
 @import './helpers/typeplate-sk/typeplate-index';
 
+// Defaults
+@import './helpers/base/defaults/formDefaults';
+
 // Mixins
 @import './helpers/mixins/layout';
 

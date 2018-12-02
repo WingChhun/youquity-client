@@ -1,4 +1,4 @@
-import * as actions from '../actions';
+import {ADD_SHARE_CLASS, ISSUE_SHARES, CREATE_PENDING_SHARES} from '../actions';
 
 const initialState = {
     companyData: {
@@ -58,7 +58,6 @@ const initialState = {
                         dataName: 'Requests Pending',
                         data: 'Yes',
                         editable: false,
-                        href: '#'
                     }
                 ]
             },
@@ -166,7 +165,6 @@ const initialState = {
         ],
         pending: [
             {
-                requestId: 1,
                 certificateTitle: 'Jim Shareholder',
                 numShares: '50,000',
                 requestDate: '3/1/18',
@@ -184,16 +182,9 @@ const initialState = {
                         stepName: 'Payment Received',
                         stepComplete: false,
                     },
-                    {
-                        stepOrder: 3,
-                        stepSlug: 'certIssued',
-                        stepName: 'Certificate Issued',
-                        stepComplete: false,
-                    }
                 ]
             },
             {
-                requestId: 2,
                 certificateTitle: 'Jill Shareholder',
                 numShares: '10,000',
                 requestDate: '3/1/18',
@@ -211,16 +202,9 @@ const initialState = {
                         stepName: 'Payment Received',
                         stepComplete: false,
                     },
-                    {
-                        stepOrder: 3,
-                        stepSlug: 'certIssued',
-                        stepName: 'Certificate Issued',
-                        stepComplete: false,
-                    }
                 ]
             },
             {
-                requestId: 3,
                 certificateTitle: 'Bob Shareholder',
                 numShares: '100,000',
                 requestDate: '3/1/18',
@@ -238,12 +222,6 @@ const initialState = {
                         stepName: 'Payment Received',
                         stepComplete: false,
                     },
-                    {
-                        stepOrder: 3,
-                        stepSlug: 'certIssued',
-                        stepName: 'Certificate Issued',
-                        stepComplete: false,
-                    }
                 ]
             }
         ]
@@ -277,6 +255,20 @@ const initialState = {
     }
 };
 
+// TODO: figure out redirects
+
 export const investmentReducer = (state=initialState, action) => {
-    return state;
+    const newState = {...state};
+    switch(action.type) {
+        case ADD_SHARE_CLASS:
+            return newState;
+        case ISSUE_SHARES:
+            newState.investmentData.issued = [...newState.investmentData.issued, action.data];
+            return newState;
+        case CREATE_PENDING_SHARES:
+            newState.investmentData.pending = [...newState.investmentData.pending, action.data];
+            return newState;
+        default:
+            return newState;
+    }
 };

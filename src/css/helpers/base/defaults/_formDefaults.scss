@@ -1,0 +1,28 @@
+@import '../../mixins/layout';
+.form {
+    @include container(true, false);
+    .field {
+        @include container(false, false);
+    }
+
+    .fieldset {
+        @include container(true, false);
+    }
+
+    .label {
+        padding-right: 5px;
+    }
+
+    .control {
+        width: 100%;
+        @include flex;
+        &.checkbox {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            .label {
+                padding-right: 0;
+                padding-left: 5px;
+            }
+        }
+    }
+}

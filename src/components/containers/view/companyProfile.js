@@ -47,11 +47,11 @@ export class CompanyProfile extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    companyName: state.companyData.name,
-    aboutText: state.companyData.description,
-    summaryData: state.companyData.summaryData,
-    stockTypes: state.companyData.shareClasses,
-    requestListData: state.investmentData.pending
+    companyName: state.investment.companyData.name,
+    aboutText: state.investment.companyData.description,
+    summaryData: state.investment.companyData.summaryData,
+    stockTypes: state.investment.companyData.shareClasses,
+    requestListData: state.investment.investmentData.pending
 });
 
 export default connect(mapStateToProps)(CompanyProfile);

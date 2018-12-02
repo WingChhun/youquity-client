@@ -44,8 +44,8 @@ export class PendingInvestmentListing extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    requests: state.investmentData.pending,
-    stockTypes: state.companyData.shareClasses
+    requests: state.investment.investmentData.pending,
+    stockTypes: state.investment.companyData.shareClasses
 });
 
 export default connect(mapStateToProps)(PendingInvestmentListing);

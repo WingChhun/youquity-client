@@ -45,8 +45,8 @@ export class InvestmentListing extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    certificates: state.investmentData.issued,
-    stockTypes: state.companyData.shareClasses
+    certificates: state.investment.investmentData.issued,
+    stockTypes: state.investment.companyData.shareClasses
 });
 
 export default connect(mapStateToProps)(InvestmentListing);
