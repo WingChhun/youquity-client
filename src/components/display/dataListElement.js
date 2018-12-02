@@ -21,8 +21,6 @@ function DataElement(props) {
 }
 
 export default function DataListElement(props) {
-
-    console.log(props.data);
     return (
         <li className="data-list-element">
             <span className="list-element-label">{props.label}:</span>

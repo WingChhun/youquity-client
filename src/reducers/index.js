@@ -247,6 +247,33 @@ const initialState = {
                 ]
             }
         ]
+    },
+    navData: {
+        dashboard: {
+            name: 'Dashboard',
+            selected: true,
+            destination: '/'
+        },
+        issueShares: {
+            name: 'Issue Shares',
+            selected: false,
+            destination: '/issueShares'
+        },
+        showIssued: {
+            name: 'Show Investments',
+            selected: false,
+            destination: '/investmentListing'
+        },
+        showPending: {
+            name: 'Show Pending Investments',
+            selected: false,
+            destination: '/pending'
+        },
+        addShareClass: {
+            name: 'Add Share Class',
+            selected: false,
+            destination: 'addShareClass'
+        }
     }
 };
 

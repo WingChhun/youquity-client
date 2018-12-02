@@ -1,5 +1,6 @@
 @import '../../../helpers/mixins/layout';
 @import '../../../helpers/mixins/setColors';
+@import '../../../helpers/vars/colors';
 
 .top-nav {
     @include container;

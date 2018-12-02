@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import Nav from './nav';
 import Header from './header';
@@ -9,12 +10,14 @@ import '../../../css/components/containers/pageSection/wrapper.scss';
 
 export default function Wrapper() {
     return (
-        <div className="wrapper">
-            <Nav />
-            <Header />
-            <Main />
-            <Footer />
-        </div>
+        <Router>
+            <div className="wrapper">
+                <Nav />
+                <Header />
+                <Main />
+                <Footer />
+            </div>
+        </Router>
     );
 }
 

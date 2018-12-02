@@ -13,14 +13,6 @@ export default function InvestmentDetailCard(props) {
                 data={line} />
         );
     });
-
-    const buttons = props.cardButtons.map((button, i) => {
-        return(
-            <button className={button.className} key={i}>
-                {button.buttonText}
-            </button>
-        );
-    });
     return (
         <article className="investment-detail-card">
             <header className="detail-card-header">
@@ -32,7 +24,6 @@ export default function InvestmentDetailCard(props) {
                 </ul>
             </section>
             <footer className="detail-card-footer">
-                {buttons}
             </footer>
         </article>
     );

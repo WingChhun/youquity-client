@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import DataListElement from '../../display/dataListElement';
 import InvestmentDetailCard from '../../display/investmentDetailCard';
-import RequestListModal from '../../display/requestListModal';
 
 import '../../../css/components/containers/view/companyProfile.scss';
 
@@ -18,35 +17,20 @@ export class CompanyProfile extends React.Component {
             );
         });
 
-        const viewStockButton = {
-            className: 'view-issued-stock-btn',
-            buttonText: 'View Issued Stock'
-        };
-
-        const issueStockButton = {
-            className: 'issue-stock-btn',
-            buttonText: 'Issue Shares'
-        };
-
         const stockSummaryCards = this.props.stockTypes.map((card, i) => {
-            const cardButtons = [viewStockButton];
-            if(card.currentlyOffered) {
-                cardButtons.push(issueStockButton);
-            }
             return (
                 <InvestmentDetailCard 
                     key={i}
                     title={card.className}
-                    cardData={card.classData}
-                    cardButtons={cardButtons} />
+                    cardData={card.classData} />
             );
         });
 
         return (
             <div className="company-profile-wrapper">
                 <header className="company-profile-header">
-                    <h2 className="editable">
-                        {this.props.companyName}
+                    <h2 className="page-heading">
+                        Company Dashboard
                     </h2>
                 </header>
                 <section>
@@ -57,7 +41,6 @@ export class CompanyProfile extends React.Component {
                 <section className="stock-types">
                     {stockSummaryCards}
                 </section>
-                <RequestListModal requestData={this.props.requestListData} stockTypeData={this.props.stockTypes} />
             </div>
         );
     }

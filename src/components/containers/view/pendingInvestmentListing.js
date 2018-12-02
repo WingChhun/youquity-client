@@ -15,7 +15,7 @@ export class InvestmentListing extends React.Component {
     }
     render() {
         const stockTypes = this.mapClassSlugToName();
-        const rows = this.props.certificates.map((cert, i) => {
+        const rows = this.props.requests.map((cert, i) => {
             cert.shareClass = stockTypes[cert.shareClassSlug];
             return (<InvestmentListingRow key={i} data={cert} />);
         });
@@ -23,15 +23,14 @@ export class InvestmentListing extends React.Component {
         return (
             <div className="investment-listing-wrapper">
                 <header className="investment-listing-header">
-                    <h2 className="page-heading">Listing of All Investments</h2>
+                    <h2 className="page-heading">Listing of Pending Investments</h2>
                 </header>
                 <table className="investment-listing-table">
                     <thead>
                         <tr className="investment-listing-header-row">
-                            <th className="investment-listing-column-heading">Certificate</th>
                             <th className="investment-listing-column-heading">Shareholder</th>
                             <th className="investment-listing-column-heading">Number of Shares</th>
-                            <th className="investment-listing-column-heading">Purchase Date</th>
+                            <th className="investment-listing-column-heading">Request Date</th>
                             <th className="investment-listing-column-heading">Stock Class</th>
                         </tr>
                     </thead>
@@ -45,7 +44,7 @@ export class InvestmentListing extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    certificates: state.investmentData.issued,
+    requests: state.investmentData.pending,
     stockTypes: state.companyData.shareClasses
 });
 
