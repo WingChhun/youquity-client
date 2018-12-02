@@ -8,7 +8,7 @@ export class AddShareClass extends React.Component {
         return (
             <div className="add-share-class-page">
                 <header className="add-share-class-header">
-                    <h2 className="page-heading">Issue Shares</h2>
+                    <h2 className="page-heading">Add Share Class</h2>
                 </header>
                 <form className="add-share-class-form">
                     <label htmlFor="class-name">Class Name</label>
