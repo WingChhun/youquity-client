@@ -112,8 +112,8 @@ const initialState = {
             {
                 certificateNum: 1,
                 certificateTitle: 'Bob Shareholder',
-                numShares: 100000,
-                pricePerShare: 7,
+                numShares: '100,000',
+                pricePerShare: '$7.00',
                 purchaseDate: '1/1/18',
                 shareClassSlug: 'preferred',
                 issueDate: '2/1/18',
@@ -121,8 +121,8 @@ const initialState = {
             {
                 certificateNum: 2,
                 certificateTitle: 'Jill Shareholder',
-                numShares: 150000,
-                pricePerShare: 7,
+                numShares: '150,000',
+                pricePerShare: '$7.00',
                 purchaseDate: '1/1/18',
                 shareClassSlug: 'preferred',
                 issueDate: '2/1/18'
@@ -130,8 +130,8 @@ const initialState = {
             {
                 certificateNum: 3,
                 certificateTitle: 'Jim Shareholder',
-                numShares: 50000,
-                pricePerShare: 7,
+                numShares: '50,000',
+                pricePerShare: '$7.00',
                 purchaseDate: '1/1/18',
                 shareClassSlug: 'preferred',
                 issueDate: '2/1/18'
@@ -139,8 +139,8 @@ const initialState = {
             {
                 certificateNum: 4,
                 certificateTitle: 'Bob Shareholder',
-                numShares: 150000,
-                pricePerShare: 3.5,
+                numShares: '150,000',
+                pricePerShare: '$3.50',
                 purchaseDate: '3/1/18',
                 shareClassSlug: 'classA',
                 issueDate: '4/1/18'
@@ -148,8 +148,8 @@ const initialState = {
             {
                 certificateNum: 5,
                 certificateTitle: 'Jill Shareholder',
-                numShares: 300000,
-                pricePerShare: 3.5,
+                numShares: '300,000',
+                pricePerShare: '$3.50',
                 purchaseDate: '3/1/18',
                 shareClassSlug: 'classA',
                 issueDate: '4/1/18'
@@ -157,8 +157,8 @@ const initialState = {
             {
                 certificateNum: 6,
                 certificateTitle: 'Jim Shareholder',
-                numShares: 100000,
-                pricePerShare: 3.5,
+                numShares: '100,000',
+                pricePerShare: '$3.50',
                 purchaseDate: '3/1/18',
                 shareClassSlug: 'classA',
                 issueDate: '4/1/18'
@@ -168,7 +168,7 @@ const initialState = {
             {
                 requestId: 1,
                 certificateTitle: 'Jim Shareholder',
-                numShares: 50000,
+                numShares: '50,000',
                 requestDate: '3/1/18',
                 shareClassSlug: 'classA',
                 workflow: [
@@ -195,7 +195,7 @@ const initialState = {
             {
                 requestId: 2,
                 certificateTitle: 'Jill Shareholder',
-                numShares: 10000,
+                numShares: '10,000',
                 requestDate: '3/1/18',
                 shareClassSlug: 'classA',
                 workflow: [
@@ -222,7 +222,7 @@ const initialState = {
             {
                 requestId: 3,
                 certificateTitle: 'Bob Shareholder',
-                numShares: 100000,
+                numShares: '100,000',
                 requestDate: '3/1/18',
                 shareClassSlug: 'classA',
                 workflow: [

@@ -5,8 +5,6 @@ import CompanyProfile from '../view/companyProfile';
 import IssueShares from '../view/issueShares';
 import InvestmentListing from '../view/investmentListing';
 
-import { companyProfileData, investmentListingData, requestListData } from '../../_temporaryData';
-
 import '../../../css/components/containers/pageSection/main.scss';
 
 export default function Main() {
@@ -16,7 +14,7 @@ export default function Main() {
                 <Switch>
                     <Route
                         exact path='/'
-                        render={(props) => <CompanyProfile {...props} data={companyProfileData} requestListData={requestListData} />}
+                        component={CompanyProfile}
                     />
                     <Route
                         exact path='/issueShares'
@@ -24,7 +22,7 @@ export default function Main() {
                     />
                     <Route
                         exact path='/investmentListing'
-                        render={(props) => <InvestmentListing {...props} data={investmentListingData} />}
+                        component={InvestmentListing}
                     />
                 </Switch>
             </Router>
