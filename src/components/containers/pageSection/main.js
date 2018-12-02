@@ -5,6 +5,7 @@ import CompanyProfile from '../view/companyProfile';
 import IssueShares from '../view/issueShares';
 import InvestmentListing from '../view/investmentListing';
 import PendingInvestmentListing from '../view/pendingInvestmentListing';
+import AddShareClass from '../view/addShareClass';
 
 import '../../../css/components/containers/pageSection/main.scss';
 
@@ -27,6 +28,10 @@ export default function Main() {
                 <Route
                     exact path='/pending'
                     component={PendingInvestmentListing}
+                />
+                <Route
+                    exact path='/addShareClass'
+                    component={AddShareClass}
                 />
             </Switch>
         </main>

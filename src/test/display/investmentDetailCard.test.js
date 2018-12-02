@@ -3,9 +3,7 @@ import {shallow} from 'enzyme';
 
 import InvestmentDetailCard from '../../components/display/investmentDetailCard';
 
-const card = {
-    cardTitle: 'Company A',
-    cardData: [
+const cardData = [
         {
             label: 'Total investment in Company A',
             data: '$50,000'
@@ -26,21 +24,10 @@ const card = {
             label: 'Net Gain/Loss',
             data: '+$5,000'
         }
-    ],
-    cardButtons: [
-        {
-            className: 'issue-stock-btn',
-            buttonText: 'Issue Shares'
-        },
-        {
-            className: 'view-issued-stock-btn',
-            buttonText: 'View Issued Stock'
-        }
-    ]
-};
+    ];
 
 describe('<InvestmentDetailCard />', () => {
     it('Renders without crashing.', () => {
-        shallow(<InvestmentDetailCard data={card} />);
+        shallow(<InvestmentDetailCard cardData={cardData} />);
     });
 });

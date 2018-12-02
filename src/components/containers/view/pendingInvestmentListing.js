@@ -5,7 +5,7 @@ import InvestmentListingRow from '../../display/investmentListingRow';
 
 import '../../../css/components/containers/view/investmentListing.scss';
 
-export class InvestmentListing extends React.Component {
+export class PendingInvestmentListing extends React.Component {
     mapClassSlugToName() {
         let classes = {};
         this.props.stockTypes.forEach(element => {
@@ -48,4 +48,4 @@ const mapStateToProps = state => ({
     stockTypes: state.companyData.shareClasses
 });
 
-export default connect(mapStateToProps)(InvestmentListing);
+export default connect(mapStateToProps)(PendingInvestmentListing);

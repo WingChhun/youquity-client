@@ -1,0 +1,12 @@
+@import '../../../helpers/mixins/layout';
+@import '../../../helpers/vars/colors';
+.add-share-class-form {
+    @include container(true);
+    @include flex(true);
+    text-align: left;
+    font-weight: bold;
+    color: map-get($colors, dark);
+    .form-input {
+        margin-bottom: 10px;
+    }
+}
