@@ -3,65 +3,105 @@ import * as actions from '../actions';
 const initialState = {
     companyData: {
         name: 'Company A',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nullam sollicitudin leo vitae risus scelerisque convallis.Nullam at turpis dolor.Curabitur ornare ex et elit elementum fermentum.Proin elementum augue vel sem commodo aliquam.Nunc vitae justo a sapien blandit porta.In id justo dapibus, finibus ante id, vehicula enim.Donec rutrum sapien eget tempus ultricies.Nullam condimentum imperdiet ullamcorper.Cras lobortis semper eros quis gravida.Nulla hendrerit, mi quis tincidunt sodales, lectus mi rutrum nulla, at pharetra leo augue non leo.Curabitur cursus lobortis ex, in auctor dolor molestie ac.Proin egestas placerat enim vitae ornare.',
+        summaryData: [
+            {
+                label: 'Authorized Shares',
+                data: '10,000,000'
+            },
+            {
+                label: 'Issued Shares',
+                data: '850,000'
+            },
+            {
+                label: 'Reserved Shares',
+                data: '100,000'
+            }
+        ],
         shareClasses: [
             {
                 classSlug: 'classA',
                 className: 'Class A',
+                currentlyOffered: true,
                 classData: [
                     {
                         dataSlug: 'authedShares',
                         dataName: 'Authorized Shares',
-                        data: 9000000,
+                        data: '9,000,000',
                         editable: true
+                    },
+                    {
+                        dataSlug: 'issuedShares',
+                        dataName: 'Issued Shares',
+                        data: '550,000',
+                        editable: false
                     },
                     {
                         dataSlug: 'reservedShares',
                         dataName: 'Reserved Shares',
-                        data: 100000,
+                        data: '100,000',
                         editable: true
                     },
                     {
                         dataSlug: 'currentlyOffered',
                         dataName: 'Currently Offered',
-                        data: true,
+                        data: 'Yes',
                         editable: true
                     },
                     {
                         dataSlug: 'currentPrice',
                         dataName: 'Current Price per Share',
-                        data: 4,
+                        data: '$4.00',
                         editable: true
+                    },
+                    {
+                        dataSlug: 'requestsPending',
+                        dataName: 'Requests Pending',
+                        data: 'Yes',
+                        editable: false,
+                        href: '#'
                     }
                 ]
             },
             {
                 classSlug: 'preferred',
                 className: 'Preferred',
+                currentlyOffered: false,
                 classData: [
                     {
                         dataSlug: 'authedShares',
                         dataName: 'Authorized Shares',
-                        data: 1000000,
+                        data: '1,000,000',
                         editable: true
+                    },
+                    {
+                        dataSlug: 'issuedShares',
+                        dataName: 'Issued Shares',
+                        data: '300,000',
+                        editable: false
                     },
                     {
                         dataSlug: 'reservedShares',
                         dataName: 'Reserved Shares',
-                        data: 0,
+                        data: '0',
                         editable: true
                     },
                     {
                         dataSlug: 'currentlyOffered',
                         dataName: 'Currently Offered',
-                        data: false,
+                        data: 'No',
                         editable: true
                     },
                     {
                         dataSlug: 'currentPrice',
                         dataName: 'Current Price per Share',
-                        data: 0,
+                        data: '0',
                         editable: true
+                    },
+                    {
+                        dataSlug: 'requestsPending',
+                        dataName: 'Requests Pending',
+                        data: 'No',
+                        editable: false
                     }
                 ]
             },

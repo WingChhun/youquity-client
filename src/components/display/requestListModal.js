@@ -5,7 +5,7 @@ import RequestListRow from './requestListRow';
 import '../../css/components/display/requestListModal.scss';
 
 export default function RequestList(props) {
-    const requests = props.data.requests.map((request, i) => {
+    const requests = props.requestData.map((request, i) => {
         return(
             <RequestListRow key={i} data={request} />
         );
@@ -19,7 +19,6 @@ export default function RequestList(props) {
                         <button className="close-button">Close</button>
                     </div>
                     <h3 className="heading">Pending Requests</h3>
-                    <p className="subhead">for {props.data.shareType} Shares</p>
                 </header>
                 <section className="modal-details">
                     <table className="request-list-table">

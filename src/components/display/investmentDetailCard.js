@@ -5,11 +5,16 @@ import DataListElement from './dataListElement';
 import '../../css/components/display/investmentDetailCard.scss';
 
 export default function InvestmentDetailCard(props) {
-    const details = props.data.cardData.map((line, i) => {
-        return <DataListElement key={i} data={line} />;
+    const details = props.cardData.map((line, i) => {
+        return(
+            <DataListElement 
+                key={i} 
+                label={line.dataName}
+                data={line} />
+        );
     });
 
-    const buttons = props.data.cardButtons.map((button, i) => {
+    const buttons = props.cardButtons.map((button, i) => {
         return(
             <button className={button.className} key={i}>
                 {button.buttonText}
@@ -19,7 +24,7 @@ export default function InvestmentDetailCard(props) {
     return (
         <article className="investment-detail-card">
             <header className="detail-card-header">
-                <h3 className="detail-card-title">{props.data.cardTitle}</h3>
+                <h3 className="detail-card-title">{props.title}</h3>
             </header>
             <section className="card-details">
                 <ul>

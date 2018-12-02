@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import DataListElement from '../../display/dataListElement';
 import InvestmentDetailCard from '../../display/investmentDetailCard';
@@ -6,39 +7,68 @@ import RequestListModal from '../../display/requestListModal';
 
 import '../../../css/components/containers/view/companyProfile.scss';
 
-export default function CompanyProfile(props) {
-    const companySummary = props.data.summaryData.map((line, i) => {
-        return(
-            <DataListElement key={i} data={line} />
-        );
-    });
+export class CompanyProfile extends React.Component {
+    render() {
+        const companySummary = this.props.summaryData.map((line, i) => {
+            return (
+                <DataListElement 
+                    key={i}
+                    label={line.label}
+                    data={line} />
+            );
+        });
 
-    const stockSummaryCards = props.data.stockTypes.map((card, i) => {
-        return(
-            <InvestmentDetailCard key={i} data={card} />
-        );
-    });
+        const viewStockButton = {
+            className: 'view-issued-stock-btn',
+            buttonText: 'View Issued Stock'
+        };
 
-    return (
-        <div className="company-profile-wrapper">
-            <header className="company-profile-header">
-                <h2>
-                    {props.data.companyName} <i className="far fa-edit"></i>
-                </h2>
-            </header>
-            <section>
-                <ul>
-                    {companySummary}
-                </ul>
-            </section>
-            <section className="company-about">
-                <h3>About {props.data.companyName}:</h3>
-                <p className="company-about">{props.data.aboutText} <i className="far fa-edit"></i></p>
-            </section>
-            <section className="stock-types">
-                {stockSummaryCards}
-            </section>
-            <RequestListModal data={props.requestListData} />
-        </div>
-    );
+        const issueStockButton = {
+            className: 'issue-stock-btn',
+            buttonText: 'Issue Shares'
+        };
+
+        const stockSummaryCards = this.props.stockTypes.map((card, i) => {
+            const cardButtons = [viewStockButton];
+            if(card.currentlyOffered) {
+                cardButtons.push(issueStockButton);
+            }
+            return (
+                <InvestmentDetailCard 
+                    key={i}
+                    title={card.className}
+                    cardData={card.classData}
+                    cardButtons={cardButtons} />
+            );
+        });
+
+        return (
+            <div className="company-profile-wrapper">
+                <header className="company-profile-header">
+                    <h2 className="editable">
+                        {this.props.companyName}
+                    </h2>
+                </header>
+                <section>
+                    <ul>
+                        {companySummary}
+                    </ul>
+                </section>
+                <section className="stock-types">
+                    {stockSummaryCards}
+                </section>
+                <RequestListModal requestData={this.props.requestListData} stockTypeData={this.props.stockTypes} />
+            </div>
+        );
+    }
 }
+
+const mapStateToProps = state => ({
+    companyName: state.companyData.name,
+    aboutText: state.companyData.description,
+    summaryData: state.companyData.summaryData,
+    stockTypes: state.companyData.shareClasses,
+    requestListData: state.investmentData.pending
+});
+
+export default connect(mapStateToProps)(CompanyProfile);
