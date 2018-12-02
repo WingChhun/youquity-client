@@ -18,7 +18,7 @@ export class IssueShares extends React.Component {
         const availableClasses = this.getAvailableClasses();
         const classOptionList = availableClasses.map((element, i) => {
             return(
-                <option value={element.classSlug}>{element.className}</option>
+                <option key={i} value={element.classSlug}>{element.className}</option>
             );
         });
         return (
