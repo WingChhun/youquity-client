@@ -18,7 +18,7 @@ export default function Main() {
                     />
                     <Route
                         exact path='/issueShares'
-                        render={(props) => <IssueShares {...props} />}
+                        component={IssueShares}
                     />
                     <Route
                         exact path='/investmentListing'
