@@ -22,6 +22,7 @@ export const initializeDataError = err => ({
 });
 
 export const initializeData = () => dispatch => {
+    dispatch(initializeDataRequest());
     fetch(`${API_BASE_URL}/company`, {
         method: 'get',
         headers: new Headers({

@@ -13,10 +13,11 @@ import '../../../css/components/containers/pageSection/wrapper.scss'
 
 export class Wrapper extends React.Component {
     componentDidMount() {
-        this.props.initializeData();
+        if(this.props.jwt) {
+            this.props.initializeData();
+        }
     }
     render() {
-        if(this.props.isReady) {
         return (
             <Router>
                 <div className="wrapper">
@@ -27,14 +28,11 @@ export class Wrapper extends React.Component {
                 </div>
             </Router>
         );
-        } else {
-            return(<div clasName="loading">Loading</div>);
-        }
     }
 }
 
 const mapStateToProps = state => ({
-    isReady: state.investment.isReady
+    jwt: state.investment.jwt
 });
 
 const mapDispatchToProps = {
