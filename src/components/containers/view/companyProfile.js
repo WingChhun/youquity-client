@@ -15,41 +15,49 @@ export class CompanyProfile extends React.Component {
         }
     }
     render() {
-        const companySummary = this.props.summaryData.map((line, i) => {
-            return (
-                <DataListElement 
-                    key={i}
-                    label={line.label}
-                    data={line} />
-            );
-        });
+        if(this.props.isReady) {
+            const companySummary = this.props.summaryData.map((line, i) => {
+                return (
+                    <DataListElement 
+                        key={i}
+                        label={line.label}
+                        data={line} />
+                );
+            });
 
-        const stockSummaryCards = this.props.stockTypes.map((card, i) => {
-            return (
-                <InvestmentDetailCard 
-                    key={i}
-                    title={card.className}
-                    cardData={card.classData} />
-            );
-        });
 
-        return (
-            <div className="company-profile-wrapper">
-                <header className="company-profile-header">
-                    <h2 className="page-heading">
-                        Company Dashboard
-                    </h2>
-                </header>
-                <section>
-                    <ul>
-                        {companySummary}
-                    </ul>
-                </section>
-                <section className="stock-types">
-                    {stockSummaryCards}
-                </section>
-            </div>
-        );
+            const stockSummaryCards = this.props.stockTypes.map((card, i) => {
+                return (
+                    <InvestmentDetailCard 
+                        key={i}
+                        title={card.className}
+                        cardData={card.classData} />
+                );
+            });
+
+
+            return (
+                <div className="company-profile-wrapper">
+                    <header className="company-profile-header">
+                        <h2 className="page-heading">
+                            Company Dashboard
+                        </h2>
+                    </header>
+                    <section>
+                        <ul>
+                            {companySummary}
+                        </ul>
+                    </section>
+                    <section className="stock-types">
+                        {stockSummaryCards}
+                    </section>
+                </div>
+            );
+        } else {
+            return(
+                <div className="loading">Loading</div>
+            )
+        }
     }
 }
 
@@ -59,7 +67,8 @@ const mapStateToProps = state => ({
     summaryData: state.investment.companyData.summaryData,
     stockTypes: state.investment.companyData.shareClasses,
     requestListData: state.investment.investmentData.pending,
-    redirect: state.investment.redirect
+    redirect: state.investment.redirect,
+    isReady: state.investment.isReady
 });
 
 export default connect(mapStateToProps)(CompanyProfile);

@@ -1,9 +1,9 @@
 import { API_BASE_URL } from '../config';
-import {jwt} from './helpers/jwt';
 
 import formatApiCompany from './helpers/formatApiCompany';
 
-// WIRING UP API
+const jwt = localStorage.getItem('jwt');
+
 export const INITIALIZE_DATA_REQUEST = 'INITIALIZE_DATA_REQUEST';
 export const initializeDataRequest = () => ({
     type: INITIALIZE_DATA_REQUEST

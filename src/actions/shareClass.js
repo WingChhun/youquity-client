@@ -1,8 +1,10 @@
 import createSlug from './helpers/createSlug';
 import { API_BASE_URL } from '../config';
-import { jwt } from './helpers/jwt';
+
 
 import formatShareClass from './helpers/formatShareClass';
+
+const jwt = localStorage.getItem('jwt');
 
 export const addShareClass = (data) => dispatch => {
     dispatch(addShareClassRequest())

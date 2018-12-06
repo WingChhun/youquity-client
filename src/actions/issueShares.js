@@ -3,7 +3,8 @@ import formatDate from './helpers/formatDate';
 import formatNumber from './helpers/formatNumber';
 import formatCurrency from './helpers/formatCurrency';
 import {API_BASE_URL} from '../config';
-import {jwt} from './helpers/jwt';
+
+const jwt = localStorage.getItem('jwt');
 
 export const issueShares = data => dispatch => {
     dispatch(issueSharesRequest());
