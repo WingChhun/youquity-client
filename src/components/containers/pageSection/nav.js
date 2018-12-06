@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
+import {slide as Menu} from 'react-burger-menu';
+
 import '../../../css/components/containers/pageSection/nav.scss';
 
 export class Nav extends React.Component {
@@ -12,11 +14,11 @@ export class Nav extends React.Component {
                 const link = this.props.links[property];
                 const classString = (link.selected ? ` ${link.class} selected` : ` ${link.class}`);
                 elements.push(
-                    <li className={`nav-element${classString}`} key={property}>
                         <Link 
                             to={link.destination}
-                            className={`nav-link${classString}`}>{link.name}</Link>
-                    </li>
+                            className={`nav-link menu-item${classString}`}>
+                                {link.name}
+                            </Link>
                 );
             }
         }
@@ -27,9 +29,9 @@ export class Nav extends React.Component {
         const elements = this.renderNavElements();
                 return (
             <nav className="top-nav">
-                <ul className="nav-list">
+                <Menu right>
                     {elements}
-                </ul>
+                </Menu>
             </nav>
         );
     }
