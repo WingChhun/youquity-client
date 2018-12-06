@@ -3,9 +3,16 @@ import {connect} from 'react-redux';
 
 import InvestmentListingRow from '../../display/investmentListingRow';
 
+import { clearRedirect } from '../../../actions';
+
 import '../../../css/components/containers/view/investmentListing.scss';
 
 export class InvestmentListing extends React.Component {
+    componentDidMount() {
+        if (this.props.redirect) {
+            this.props.dispatch(clearRedirect());
+        }
+    }
     mapClassSlugToName() {
         let classes = {};
         this.props.stockTypes.forEach(element => {
@@ -46,7 +53,8 @@ export class InvestmentListing extends React.Component {
 
 const mapStateToProps = state => ({
     certificates: state.investment.investmentData.issued,
-    stockTypes: state.investment.companyData.shareClasses
+    stockTypes: state.investment.companyData.shareClasses,
+    redirect: state.investment.redirect
 });
 
 export default connect(mapStateToProps)(InvestmentListing);

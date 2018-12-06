@@ -3,9 +3,16 @@ import {connect} from 'react-redux';
 
 import InvestmentListingRow from '../../display/investmentListingRow';
 
+import { clearRedirect } from '../../../actions';
+
 import '../../../css/components/containers/view/investmentListing.scss';
 
 export class PendingInvestmentListing extends React.Component {
+    componentDidMount() {
+        if (this.props.redirect) {
+            this.props.dispatch(clearRedirect());
+        }
+    }
     mapClassSlugToName() {
         let classes = {};
         this.props.stockTypes.forEach(element => {
@@ -45,7 +52,8 @@ export class PendingInvestmentListing extends React.Component {
 
 const mapStateToProps = state => ({
     requests: state.investment.investmentData.pending,
-    stockTypes: state.investment.companyData.shareClasses
+    stockTypes: state.investment.companyData.shareClasses,
+    redirect: state.investment.redirect
 });
 
 export default connect(mapStateToProps)(PendingInvestmentListing);

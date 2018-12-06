@@ -1,8 +1,10 @@
-import {ISSUE_SHARES, CREATE_PENDING_SHARES, CLEAR_REDIRECT} from '../actions';
+import {CLEAR_REDIRECT} from '../actions';
 
 import {INITIALIZE_DATA_REQUEST, INITIALIZE_DATA_ERROR, INITIALIZE_DATA_SUCCESS} from '../actions/initialize';
 
 import {ADD_SHARE_CLASS_REQUEST, ADD_SHARE_CLASS_SUCCESS, ADD_SHARE_CLASS_ERROR} from '../actions/shareClass';
+
+import {ISSUE_SHARES_ERROR, ISSUE_SHARES_REQUEST, ISSUE_SHARES_SUCCESS} from '../actions/issueShares';
 
 const initialState = {
     companyData: {},
@@ -40,10 +42,6 @@ const initialState = {
     loading: false
 };
 
-// TODO: figure out redirects
-// TODO: figure out how to update summary data on add share class
-// TODO: figure out how to update share class when adding pending shares
-
 export const investmentReducer = (state=initialState, action) => {
     const newState = {...state};
     switch(action.type) {
@@ -62,12 +60,6 @@ export const investmentReducer = (state=initialState, action) => {
             newState.loading = false;
             newState.error = action.err;
             return newState;
-        case ISSUE_SHARES:
-            newState.investmentData.issued = [...newState.investmentData.issued, action.data];
-            return newState;
-        case CREATE_PENDING_SHARES:
-            newState.investmentData.pending = [...newState.investmentData.pending, action.data];
-            return newState;
         case INITIALIZE_DATA_REQUEST:
             return newState;
         case INITIALIZE_DATA_SUCCESS:
@@ -76,8 +68,21 @@ export const investmentReducer = (state=initialState, action) => {
             newState.isReady = true;
             return newState;
         case INITIALIZE_DATA_ERROR:
+            newState.error = action.err;
             return newState;
+        case ISSUE_SHARES_ERROR:
+            newState.loading = false;
+            newState.err = action.err;
+            return newState;
+        case ISSUE_SHARES_REQUEST:
+            newState.loading = true;
+            return newState;
+        case ISSUE_SHARES_SUCCESS:
+            newState.investmentData[action.issueType].push(action.data);
+            newState.loading = false;
+            newState.redirect = (action.issueType === 'pending' ? '/pending' : '/investmentListing');
+            return newState
         default:
-            return newState;
+            return state;
     }
 };
