@@ -1,46 +1,87 @@
-## YouQuity
+# YouQuity
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+YouQuity is an app to help small businesses manage their equity structures.  This is something that many privately held small businesses struggle with.  Attorneys are typically used to manage this process, at a cost of thousands of dollars (or more) per year, but with the proper tools this process can be managed by the small business with minimal attorney oversight, greatly reducing costs.
 
-## Available Scripts
+This app is currently in the MVP (minimum viable product) stage, and right now it allows companies to create share classes, and create issued or pending investment records.
 
-In the project directory, you can run:
+There is currently a single user role in the system.  The test account can be accessed with the following credentials:
 
-### `npm start`
+username: test@test.test
+password: testing123
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**The live app can be accessed at http://youquity.amandareilly.me**
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Using Locally
+This app was bootstrapped using 'create-react-app' ([Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started));
 
-### `npm test`
+If you would like to run this app in your local development environment, you will also need to run the companion api server (https://github.com/amandareilly/youquity-api).  Instructions for building and running the api server are included in the README file of that repo.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To install and run this client, cd into the project directory and run 'npm install' (or 'sudo npm install' depending on your environment settings).
 
-### `npm run build`
+Because this is currently an MVP, full user and company creation is not yet available.  In order to use the client, you will first need to manually connect to the API (example: via Postman) and make the following requests:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+POST /api/users :
+```javascript
+{
+    "firstName": "User",
+    "lastName": "Name",
+    "email": "test@test.test",
+    "password": "testing123"
+}
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+POST /api/auth/login :
+```javascript
+{
+    "email": "test@test.test",
+    "password": "testing123"
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+POST /api/company (using jwt from second POST request as bearer token):
+```javascript
+{
+    "name": "Test Company"
+}
+```
 
-### `npm run eject`
+Once dependencies are installed and initial data is created, you can run 'npm start' to start the server, which can be accessed at http://localhost:3000.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Please note, you may also need to modify the API_BASE_URL config variable to connect to your local api server.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Techology Used
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* HTML5
+* CSS3
+* JavaScript
 
-## Learn More
+### Frameworks and Packages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* [React](https://reactjs.org/)
+* [react-router](https://www.npmjs.com/package/react-router)
+* [react-redux](https://www.npmjs.com/package/react-redux)
+* [redux-form](https://www.npmjs.com/package/redux-form)
+* [redux-thunk](https://www.npmjs.com/package/redux-thunk)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Build Tools
+
+* [NPM](https://www.npmjs.com/) - Package Manager
+* [SASS](https://sass-lang.com/) - CSS Pre-Processor
+* [Babel](https://babeljs.io/) - JavaScript Compiler
+* [webpack](https://webpack.js.org/) - Module Bundler
+* [git](https://git-scm.com/) - Source Control
+
+### CI and Depoloyment
+
+* [Travis CI](https://travis-ci.org/) - Continuous Integration
+* [Heroku](https://www.heroku.com) - Cloud Deployment
+* [mLab](https://mlab.com) - Database-as-a-Service for MongoDB
+
+## Author
+
+* **Amanda Reilly** - [amandareilly](https://github.com/amandareilly)
+
+## License
+
+This project is licensed under the MIT License.
