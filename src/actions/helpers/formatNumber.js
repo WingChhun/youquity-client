@@ -1,4 +1,8 @@
 export default function formatNumber(number, decPlaces = 0) {
+    // return zero if we get a falsy number
+    if(!number) {
+        return 0;
+    }
 
     // round if necessary
     number = parseFloat(number).toFixed(decPlaces);

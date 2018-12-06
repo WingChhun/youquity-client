@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import { renderInputField, renderSelectField } from './renderField';
+import { renderInputField } from './renderField';
 
 import '../../css/components/forms/addShareClassForm.scss';
 

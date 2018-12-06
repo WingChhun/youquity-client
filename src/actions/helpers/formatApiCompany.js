@@ -1,7 +1,7 @@
 import formatCurrency from './formatCurrency';
 import formatDate from './formatDate';
 import formatNumber from './formatNumber';
-import prettifyBoolean from './formatNumber';
+import prettifyBoolean from './prettifyBoolean';
 
 // takes the company object returned from
 // the api and does some formatting to make

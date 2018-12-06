@@ -1,0 +1,2 @@
+// hardcode a jwt to get everything working first
+export const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWMwODNhODgzODllMGYzYzg4NDZlZmQ0IiwibmFtZSI6IkFtYW5kYSBSZWlsbHkiLCJlbWFpbCI6InRlc3RAdGVzdC50ZXN0In0sImlhdCI6MTU0NDA0MzIzNiwiZXhwIjoxNTQ0NjQ4MDM2LCJzdWIiOiJ0ZXN0QHRlc3QudGVzdCJ9.q8eqSS2gv_o47ZAThqhgA4-zMhdtX1i98I3Yrh1g5-0';

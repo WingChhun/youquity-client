@@ -4,9 +4,16 @@ import {connect} from 'react-redux';
 import DataListElement from '../../display/dataListElement';
 import InvestmentDetailCard from '../../display/investmentDetailCard';
 
+import {clearRedirect} from '../../../actions';
+
 import '../../../css/components/containers/view/companyProfile.scss';
 
 export class CompanyProfile extends React.Component {
+    componentDidMount() {
+        if(this.props.redirect) {
+            this.props.dispatch(clearRedirect());
+        }
+    }
     render() {
         const companySummary = this.props.summaryData.map((line, i) => {
             return (
@@ -51,7 +58,8 @@ const mapStateToProps = state => ({
     aboutText: state.investment.companyData.description,
     summaryData: state.investment.companyData.summaryData,
     stockTypes: state.investment.companyData.shareClasses,
-    requestListData: state.investment.investmentData.pending
+    requestListData: state.investment.investmentData.pending,
+    redirect: state.investment.redirect
 });
 
 export default connect(mapStateToProps)(CompanyProfile);

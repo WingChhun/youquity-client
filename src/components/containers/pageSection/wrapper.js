@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {initializeData} from '../../../actions';
+import {initializeData} from '../../../actions/initialize';
 
 import Nav from './nav';
 import Header from './header';
@@ -16,7 +16,6 @@ export class Wrapper extends React.Component {
         this.props.initializeData();
     }
     render() {
-        console.log(this.props);
         if(this.props.isReady) {
         return (
             <Router>

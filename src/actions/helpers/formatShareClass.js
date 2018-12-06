@@ -1,19 +1,19 @@
-import createSlug from './createSlug';
 import formatNumber from './formatNumber';
 import prettifyBoolean from './prettifyBoolean';
 import formatCurrency from './formatCurrency';
 
 export default function formatShareClass(data) {
+    console.log(data);
     return(
         {
-            classSlug: createSlug(data.className),
+            classSlug: data.classSlug,
             className: data.className,
             currentlyOffered: (data.currentlyOffered ? true : false),
             classData: [
                 {
                     dataSlug: 'authedShares',
                     dataName: 'Authorized Shares',
-                    data: formatNumber(data.authorizedShares),
+                    data: formatNumber(data.authedShares),
                     editable: true
                 },
                 {
@@ -37,7 +37,7 @@ export default function formatShareClass(data) {
                 {
                     dataSlug: 'currentPrice',
                     dataName: 'Current Price per Share',
-                    data: formatCurrency(data.sharePrice),
+                    data: formatCurrency(data.currentPrice),
                     editable: true
                 },
                 {

@@ -1,4 +1,8 @@
-import {ADD_SHARE_CLASS, ISSUE_SHARES, CREATE_PENDING_SHARES, INITIALIZE_DATA_REQUEST, INITIALIZE_DATA_ERROR, INITIALIZE_DATA_SUCCESS} from '../actions';
+import {ISSUE_SHARES, CREATE_PENDING_SHARES, CLEAR_REDIRECT} from '../actions';
+
+import {INITIALIZE_DATA_REQUEST, INITIALIZE_DATA_ERROR, INITIALIZE_DATA_SUCCESS} from '../actions/initialize';
+
+import {ADD_SHARE_CLASS_REQUEST, ADD_SHARE_CLASS_SUCCESS, ADD_SHARE_CLASS_ERROR} from '../actions/shareClass';
 
 const initialState = {
     companyData: {},
@@ -31,7 +35,9 @@ const initialState = {
         }
     },
     isReady: false,
-    error: false
+    error: false,
+    redirect: false,
+    loading: false
 };
 
 // TODO: figure out redirects
@@ -41,8 +47,20 @@ const initialState = {
 export const investmentReducer = (state=initialState, action) => {
     const newState = {...state};
     switch(action.type) {
-        case ADD_SHARE_CLASS:
-            newState.companyData.shareClasses = [...newState.companyData.shareClasses, action.data];
+        case CLEAR_REDIRECT:
+            newState.redirect = false;
+            return newState;
+        case ADD_SHARE_CLASS_REQUEST:
+            newState.loading = true;
+            return newState;
+        case ADD_SHARE_CLASS_SUCCESS:
+            newState.companyData.shareClasses.push(action.data);
+            newState.redirect = '/';
+            newState.loading = false;
+            return newState;
+        case ADD_SHARE_CLASS_ERROR:
+            newState.loading = false;
+            newState.error = action.err;
             return newState;
         case ISSUE_SHARES:
             newState.investmentData.issued = [...newState.investmentData.issued, action.data];
@@ -54,7 +72,7 @@ export const investmentReducer = (state=initialState, action) => {
             return newState;
         case INITIALIZE_DATA_SUCCESS:
             newState.companyData = {...action.data.companyData}
-            newState.investmentData = {... action.data.investmentData};
+            newState.investmentData = {...action.data.investmentData};
             newState.isReady = true;
             return newState;
         case INITIALIZE_DATA_ERROR:
