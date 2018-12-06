@@ -10,7 +10,7 @@ export class Nav extends React.Component {
         for (const property in this.props.links) {
             if(this.props.links.hasOwnProperty(property)) {
                 const link = this.props.links[property];
-                const classString = (link.selected ? ' selected' : '');
+                const classString = (link.selected ? ` ${link.class} selected` : ` ${link.class}`);
                 elements.push(
                     <li className={`nav-element${classString}`} key={property}>
                         <Link 
@@ -25,7 +25,7 @@ export class Nav extends React.Component {
 
     render() {
         const elements = this.renderNavElements();
-        return (
+                return (
             <nav className="top-nav">
                 <ul className="nav-list">
                     {elements}

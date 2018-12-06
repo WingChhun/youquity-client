@@ -1,8 +1,45 @@
 @import '../../../helpers/mixins/layout';
 @import '../../../helpers/mixins/setColors';
 @import '../../../helpers/vars/colors';
-
 .top-nav {
     @include container;
     @include setColors(medium, dark);
+    @include flex;
+    justify-content: space-between;
 }
+
+.nav-list {
+    @include flex;
+}
+
+.nav-element {
+    display: block;
+    padding: 10px;
+    &:hover,
+    &:active {
+        border-bottom: 2px solid map-get($colors, dark);
+        padding-bottom: 8px;
+    }
+}
+
+.nav-link:link,
+.nav-link:visited,
+.nav-link:active,
+.nav-link:hover {
+    color: map-get($colors, dark);
+    font-weight: 500;
+    text-decoration: none;
+
+    .svg-inline--fa {
+        color: map-get($colors, dark);
+    }
+}
+
+.nav-link:active, .nav-link:hover {
+    color: map-get($colors, light);
+
+    .svg-inline--fa {
+        color: map-get($colors, light);
+    }
+}
+
