@@ -62,7 +62,6 @@ const links = {
 };
 
 export const investmentReducer = (state=initialState, action) => {
-    console.log('inside reducer', action);
     const newState = {...state};
     switch(action.type) {
         case LOGIN_REQUEST:
