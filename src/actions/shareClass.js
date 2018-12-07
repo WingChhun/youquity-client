@@ -8,16 +8,19 @@ const jwt = localStorage.getItem('jwt');
 
 export const addShareClass = (data) => dispatch => {
     dispatch(addShareClassRequest())
-;    data.classSlug = createSlug(data.className);
-    if(!data.currentlyOffered) {
-        data.currentlyOffered = false;
-    };
-    data.authedShares = data.authorizedShares;
-    delete data.authorizedShares;
-    data.currentPrice = data.sharePrice;
-    delete data.sharePrice;
+;   
+    if(!data.mock) {
+        data.classSlug = createSlug(data.className);
+        if(!data.currentlyOffered) {
+            data.currentlyOffered = false;
+        }
+        data.authedShares = data.authorizedShares;
+        delete data.authorizedShares;
+        data.currentPrice = data.sharePrice;
+        delete data.sharePrice;
+    }
 
-    fetch(`${API_BASE_URL}/company/shareClass`, {
+    return fetch(`${API_BASE_URL}/company/shareClass`, {
         method: 'post',
         headers: new Headers({
             'Authorization': `Bearer ${jwt}`,
