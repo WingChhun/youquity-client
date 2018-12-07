@@ -64,6 +64,9 @@ export function IssueSharesForm(props) {
     );
     return (
         <form onSubmit={props.handleSubmit} className="form issue-shares-form">
+            <div className="form-instructions">
+                <span className="strong">Instructions:</span> Investments will be marked as 'Pending' until all fields in this form have been completed.
+            </div>
             <Field 
                 name="shareType"
                 component={renderSelectField}

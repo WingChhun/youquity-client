@@ -5,6 +5,7 @@
 .form {
     @include container(true, false, dark, 3px);
     border-radius: 10px;
+    @include setBackground(semiLight, .5);
 }
 
 .field {
@@ -20,6 +21,7 @@
 .input-wrapper {
     @include container(false, false);
     padding: 10px;
+    border-radius: 5px;
     &.error {
         @include setBackground(red, .2);
     }
@@ -38,6 +40,7 @@
     width: 100%;
     padding: 10px;
     font-size: 1.25em;
+    border-radius: 5px;
 }
 
 .button {
@@ -94,3 +97,11 @@
     color: map-get($colors, dark);
 }
 
+.form-instructions {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid map-get($colors, dark);
+    @include setBackground(dark, .25);
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
