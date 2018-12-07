@@ -27,7 +27,7 @@ export const issueShares = (data, editingIndex, id, shareClasses) => dispatch =>
         apiMethod = 'put';
     }
 
-    fetch(apiUrl, {
+    return fetch(apiUrl, {
         method: apiMethod,
         headers: new Headers({
             'Authorization': `Bearer ${jwt}`,
@@ -45,10 +45,12 @@ export const issueShares = (data, editingIndex, id, shareClasses) => dispatch =>
             if(requestType === 'pending') {
                 data.requestDate = formatDate(data.requestDate);
 
-            } else {
+            } else if(requestType === 'issued'){
                 data.issueDate = formatDate(data.issueDate);
                 data.pricePerShare = formatCurrency(data.pricePerShare);
                 data.purchaseDate = formatDate(data.purchaseDate);
+            } else {
+                
             }
             
             data.numShares = formatNumber(data.numShares);
