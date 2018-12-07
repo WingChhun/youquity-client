@@ -7,6 +7,9 @@ import prettifyBoolean from './prettifyBoolean';
 // the api and does some formatting to make
 // it a little prettier
 export default function formatApiCompany(company) {
+    if(company.mock) {
+        return company;
+    }
     const prettierCompany = {...company};
 
     prettierCompany.companyData.summaryData.forEach((dataObj) => {

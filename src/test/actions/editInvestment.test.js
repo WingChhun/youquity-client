@@ -1,7 +1,5 @@
 import {editInvestment, FIND_INVESTMENT_TO_EDIT_SUCCESS, findInvestmentToEditSuccess, FIND_INVESTMENT_TO_EDIT_FAILURE, findInvestmentToEditFailure} from '../../actions/editInvestment';
 
-import formatPendingForEdit from '../../actions/helpers/formatPendingForEdit';
-
 describe('findInvestmentToEditSuccess', () => {
     it('should return the action', () => {
         const investment = {objParam: 'my param'};
@@ -26,8 +24,8 @@ describe('findInvestmentToEditFailure', () => {
 describe('editInvestment', () => {
     it('should dispatch findInvestmentEditSuccess', () => {
         const investmentToFind = {
-            id: 'lorem', shareClassSlug: 'aSlug', certificateTitle: 'John Doe', numShares: '1,000,000',
-            requestDate: '10/20/84', workflow: [{ stepComplete: true }, { stepComplete: false }]
+            mock: true,
+            id: 'lorem', 
         };
         const index = 3;
         const investments = [{ id: 'the' }, { id: 'quick' }, { id: 'brown' }, investmentToFind, { id: 'fox' }];
@@ -35,7 +33,7 @@ describe('editInvestment', () => {
         const dispatch = jest.fn();
 
         editInvestment(investmentToFind.id, investments)(dispatch);
-        expect(dispatch).toHaveBeenCalledWith(findInvestmentToEditSuccess(formatPendingForEdit(investmentToFind), index, investmentToFind.id));
+        expect(dispatch).toHaveBeenCalledWith(findInvestmentToEditSuccess(investmentToFind, index, investmentToFind.id));
     });
 
     
