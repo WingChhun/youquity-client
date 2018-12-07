@@ -14,7 +14,7 @@ export class Nav extends React.Component {
                 const link = this.props.links[property];
                 const classString = (link.selected ? ` ${link.class} selected` : ` ${link.class}`);
                 elements.push(
-                        <Link 
+                        <Link key={link.destination}
                             to={link.destination}
                             className={`nav-link menu-item${classString}`}>
                                 {link.name}

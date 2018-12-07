@@ -4,16 +4,31 @@ import formatNumber from './helpers/formatNumber';
 import formatCurrency from './helpers/formatCurrency';
 import {API_BASE_URL} from '../config';
 
+import {deletePending} from './deletePending';
+
 const jwt = localStorage.getItem('jwt');
 
-export const issueShares = data => dispatch => {
+export const issueShares = (data, editingIndex, id) => dispatch => {
     dispatch(issueSharesRequest());
     data = formatSharesRequest(data);    
+    if(id) {
+        if(data.certificateNum) {
+            // pending request has been finalized,
+            // need to delete from pending 
+            console.log('has editing index and certificate num so delete pending action should be called');
+            dispatch(deletePending(id, editingIndex));
+        }
+    }
     const requestType = (data.certificateNum ? 'issued' : 'pending');
-    const apiUrl = `${API_BASE_URL}/company/shares/${requestType}`;
+    let apiUrl = `${API_BASE_URL}/company/shares/${requestType}`;
+    let apiMethod = 'post';
+    if(id && data.certificateNum) {
+        apiUrl += `/${id}`;
+        apiMethod = 'put';
+    }
 
     fetch(apiUrl, {
-        method: 'post',
+        method: apiMethod,
         headers: new Headers({
             'Authorization': `Bearer ${jwt}`,
             'Content-Type': 'application/json'
@@ -37,13 +52,23 @@ export const issueShares = data => dispatch => {
             }
             
             data.numShares = formatNumber(data.numShares);
-            
-            dispatch(issueSharesSuccess(data, requestType));
+            if(id && requestType === 'pending') {
+                dispatch(updateSharesSuccess(data, editingIndex));
+            } else {
+                dispatch(issueSharesSuccess(data, requestType));
+            }
         })
         .catch((err) => {
             dispatch(issueSharesError(err));
         });
 }
+
+export const UPDATE_SHARES_SUCCESS = 'UPDATE_SHARES_SUCCESS';
+export const updateSharesSuccess = (data, editingIndex) => ({
+    type: UPDATE_SHARES_SUCCESS,
+    data,
+    editingIndex
+});
 
 export const ISSUE_SHARES_REQUEST = 'ISSUE_SHARES_REQUEST';
 export const issueSharesRequest = () => ({
