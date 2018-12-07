@@ -13,9 +13,10 @@ import {LOGOUT} from '../actions/logout';
 import {FIND_INVESTMENT_TO_EDIT_FAILURE, FIND_INVESTMENT_TO_EDIT_SUCCESS} from '../actions/editInvestment';
 
 import { DELETE_PENDING_ERROR, DELETE_PENDING_REQUEST, DELETE_PENDING_SUCCESS } from '../actions/deletePending';
+import { stat } from 'fs';
 
 
-const initialState = {
+export const initialState = {
     companyData: {},
     investmentData: {},
     navData: {
@@ -38,7 +39,7 @@ const initialState = {
     erroredIndex: null
 };
 
-const links = {
+export const links = {
     dashboard: {
         name: 'Dashboard',
         selected: true,
@@ -77,94 +78,152 @@ const links = {
 };
 
 export const investmentReducer = (state=initialState, action) => {
-    console.log('inside reducer', action);
-    const newState = {...state};
+    let newState;
     switch(action.type) {
         case UPDATE_SHARES_SUCCESS:
+            newState = {
+                ...state,
+                investmentData: {
+                    issued: [...state.investmentData.issued],
+                    pending: [...state.investmentData.pending]
+                },
+                loading: false,
+                editing: null,
+                editingIndex: null,
+                editingId: null,
+                redirect: '/pending'
+            };
             newState.investmentData.pending[action.editingIndex] = action.data;
-            newState.loading = false;
-            newState.editing = null;
-            newState.editingIndex = null;
-            newState.editingId = null;
-            newState.redirect = '/pending';
             return newState;
         case DELETE_PENDING_REQUEST:
-            newState.loading = true;
-            return newState;
+            return {
+                ...state,
+                loading: true
+            }
         case DELETE_PENDING_SUCCESS:
-            newState.loading = false;
-            newState.investmentData.pending.splice(action.indexToDelete,1);
-            newState.editing = null;
-            newState.editingIndex = null;
-            newState.editingId = null;
+            newState =  {
+                ...state,
+                investmentData: {
+                    issued: [...state.investmentData.issued],
+                    pending: [...state.investmentData.pending]
+                },
+                loading: false,
+                editing: null,
+                editingIndex: null,
+                editingId: null
+            };
+            newState.investmentData.pending.splice(action.indexToDelete, 1);
             return newState;
         case DELETE_PENDING_ERROR:
-            newState.loading = false;
-            newState.erroredId = action.erroredId;
-            newState.erroredIndex = action.erroredIndex;
-            return newState;
+            return {
+                ...state,
+                loading: false,
+                erroredId: action.erroredId,
+                erroredIndex: action.erroredIndex
+            }
         case FIND_INVESTMENT_TO_EDIT_FAILURE:
-            newState.error = action.err;
-            return newState;
+            return {
+                ...state,
+                error: action.err
+            }
         case FIND_INVESTMENT_TO_EDIT_SUCCESS:
-            newState.editing = action.investment;
-            newState.editingIndex = action.index;
-            newState.edigingId = action.id;
-            return newState;
+            return {
+                ...state,
+                editing: {...action.investment},
+                editingIndex: action.index,
+                editingId: action.id
+            }
         case LOGIN_REQUEST:
-            newState.loading = true;
-            return newState;
+            return {
+                ...state,
+                loading: true
+            }
         case LOGIN_SUCCESS:
-            newState.loading = false;
-            newState.jwt = action.jwt;
-            newState.user = action.user;
-            newState.navData = links;
-            return newState;
+            return {
+                ...state,
+                loading: false,
+                jwt: action.jwt,
+                user: {...action.user},
+                navData: {...links}
+            }
         case LOGIN_ERROR:
-            newState.loading = false;
-            newState.error = action.err;
-            return newState;
+            return {
+                ...state,
+                loading: false,
+                error: action.err
+            }
         case CLEAR_REDIRECT:
-            newState.redirect = false;
-            return newState;
+            return {
+                ...state,
+                redirect: false
+            }
         case ADD_SHARE_CLASS_REQUEST:
-            newState.loading = true;
-            return newState;
+            return {
+                ...state,
+                loading: true
+            }
         case ADD_SHARE_CLASS_SUCCESS:
-            newState.companyData.shareClasses.push(action.data);
-            newState.redirect = '/';
-            newState.loading = false;
-            return newState;
+            return {
+                ...state,
+                companyData: {
+                    ...state.companyData,
+                    shareClasses: [
+                        ...state.companyData.shareClasses,
+                        action.data
+                    ]
+                },
+                redirect: '/',
+                loading: false
+            }
         case ADD_SHARE_CLASS_ERROR:
-            newState.loading = false;
-            newState.error = action.err;
-            return newState;
+            return {
+                ...state,
+                loading: false,
+                error: action.err
+            }
         case INITIALIZE_DATA_REQUEST:
-            newState.loading = true;
-            newState.isReady = false;
-            return newState;
+            return {
+                ...state,
+                loading: true,
+                isReady: false
+            }
         case INITIALIZE_DATA_SUCCESS:
-            newState.companyData = {...action.data.companyData}
-            newState.investmentData = {...action.data.investmentData};
-            newState.isReady = true;
-            newState.loading = false;
-            return newState;
+            return {
+                ...state,
+                companyData: {...action.data.companyData},
+                investmentData: {...action.data.investmentData},
+                isReady: true,
+                loading: false
+            }
         case INITIALIZE_DATA_ERROR:
-            newState.loading = false;
-            newState.isReady = true;
-            newState.error = action.err;
-            return newState;
+            return {
+                ...state,
+                loading: false,
+                isReady: true,
+                error: action.err
+            }
         case ISSUE_SHARES_ERROR:
-            newState.loading = false;
-            newState.err = action.err;
-            return newState;
+            return {
+                ...state,
+                loading: false,
+                error: action.err
+            }
         case ISSUE_SHARES_REQUEST:
-            newState.loading = true;
-            return newState;
+            return {
+                ...state,
+                loading: true
+            }
         case ISSUE_SHARES_SUCCESS:
-            newState.investmentData[action.issueType].push(action.data);
-            newState.loading = false;
-            newState.redirect = (action.issueType === 'pending' ? '/pending' : '/investmentListing');
+            newState = {
+                ...state,
+                investmentData: {
+                    issued: [...state.investmentData.issued],
+                    pending: [...state.investmentData.pending]
+                },
+                loading: false,
+                redirect: (action.issueType === 'pending' ? '/pending' : '/investmentListing')
+            }
+            newState.investmentData[action.issueType] = [...state.investmentData[action.issueType], action.data];
             return newState
         case LOGOUT:
             return {...initialState};
