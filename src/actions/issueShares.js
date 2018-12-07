@@ -8,9 +8,9 @@ import {deletePending} from './deletePending';
 
 const jwt = localStorage.getItem('jwt');
 
-export const issueShares = (data, editingIndex, id) => dispatch => {
+export const issueShares = (data, editingIndex, id, shareClasses) => dispatch => {
     dispatch(issueSharesRequest());
-    data = formatSharesRequest(data);    
+    data = formatSharesRequest(data, null, shareClasses);    
     if(id) {
         if(data.certificateNum) {
             // pending request has been finalized,
