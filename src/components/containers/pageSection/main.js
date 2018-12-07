@@ -24,6 +24,10 @@ export default function Main() {
                     component={IssueShares}
                 />
                 <Route
+                    exact path='/issueShares/:investmentId'
+                    component={IssueShares}
+                />
+                <Route
                     exact path='/investmentListing'
                     component={InvestmentListing}
                 />

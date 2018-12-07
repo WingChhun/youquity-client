@@ -4,11 +4,16 @@ import {INITIALIZE_DATA_REQUEST, INITIALIZE_DATA_ERROR, INITIALIZE_DATA_SUCCESS}
 
 import {ADD_SHARE_CLASS_REQUEST, ADD_SHARE_CLASS_SUCCESS, ADD_SHARE_CLASS_ERROR} from '../actions/shareClass';
 
-import {ISSUE_SHARES_ERROR, ISSUE_SHARES_REQUEST, ISSUE_SHARES_SUCCESS} from '../actions/issueShares';
+import {ISSUE_SHARES_ERROR, ISSUE_SHARES_REQUEST, ISSUE_SHARES_SUCCESS, UPDATE_SHARES_SUCCESS} from '../actions/issueShares';
 
 import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR} from '../actions/login'
 
 import {LOGOUT} from '../actions/logout';
+
+import {FIND_INVESTMENT_TO_EDIT_FAILURE, FIND_INVESTMENT_TO_EDIT_SUCCESS} from '../actions/editInvestment';
+
+import { DELETE_PENDING_ERROR, DELETE_PENDING_REQUEST, DELETE_PENDING_SUCCESS } from '../actions/deletePending';
+
 
 const initialState = {
     companyData: {},
@@ -25,7 +30,12 @@ const initialState = {
     redirect: false,
     loading: false,
     jwt: null,
-    user: null
+    user: null,
+    editing: null,
+    editingIndex: null,
+    editingId: null,
+    erroredId: null,
+    erroredIndex: null
 };
 
 const links = {
@@ -67,8 +77,40 @@ const links = {
 };
 
 export const investmentReducer = (state=initialState, action) => {
+    console.log('inside reducer', action);
     const newState = {...state};
     switch(action.type) {
+        case UPDATE_SHARES_SUCCESS:
+            newState.investmentData.pending[action.editingIndex] = action.data;
+            newState.loading = false;
+            newState.editing = null;
+            newState.editingIndex = null;
+            newState.editingId = null;
+            newState.redirect = '/pending';
+            return newState;
+        case DELETE_PENDING_REQUEST:
+            newState.loading = true;
+            return newState;
+        case DELETE_PENDING_SUCCESS:
+            newState.loading = false;
+            newState.investmentData.pending.splice(action.indexToDelete,1);
+            newState.editing = null;
+            newState.editingIndex = null;
+            newState.editingId = null;
+            return newState;
+        case DELETE_PENDING_ERROR:
+            newState.loading = false;
+            newState.erroredId = action.erroredId;
+            newState.erroredIndex = action.erroredIndex;
+            return newState;
+        case FIND_INVESTMENT_TO_EDIT_FAILURE:
+            newState.error = action.err;
+            return newState;
+        case FIND_INVESTMENT_TO_EDIT_SUCCESS:
+            newState.editing = action.investment;
+            newState.editingIndex = action.index;
+            newState.edigingId = action.id;
+            return newState;
         case LOGIN_REQUEST:
             newState.loading = true;
             return newState;

@@ -62,6 +62,8 @@ export function IssueSharesForm(props) {
     classOptionList.unshift(
         <option key="none" value="null">Select a Class</option>
     );
+
+    console.log(props.initialValues);
     return (
         <form onSubmit={props.handleSubmit} className="form issue-shares-form">
             <div className="form-instructions">
@@ -119,5 +121,6 @@ export function IssueSharesForm(props) {
 
 export default reduxForm({
     form: 'issueSharesForm',
+    enableReinitialize: true,
     validate
 })(IssueSharesForm);

@@ -6,9 +6,22 @@ import {Redirect} from 'react-router-dom';
 import IssueSharesForm from '../../forms/issueSharesForm';
 import Loading from '../../display/loadingDiv';
 
+import {editInvestment} from '../../../actions/editInvestment';
+
 import '../../../css/components/containers/view/issueShares.scss';
 
 export class IssueShares extends React.Component {
+    componentDidMount() {
+        let params;
+        if(this.props.match) {
+            params = this.props.match.params;
+        } else {
+            params = null;
+        }
+        if(params && params.investmentId) {
+            this.props.editInvestment(params.investmentId, this.props.pendingInvestments);
+        }
+    }
     getAvailableClasses() {
         const classes = [];
         this.props.shareClasses.forEach((element) => {
@@ -20,7 +33,17 @@ export class IssueShares extends React.Component {
     }
 
     handleSubmit(v) {
-        this.props.dispatch(issueShares(v));
+        let params;
+        if (this.props.match) {
+            params = this.props.match.params;
+        } else {
+            params = null;
+        }
+        if(params && params.investmentId) {
+            this.props.issueShares(v, this.props.editingIndex, params.investmentId);
+        } else {
+            this.props.issuedShares(v, null, null);
+        }
     }
 
     render() {
@@ -30,6 +53,9 @@ export class IssueShares extends React.Component {
                     <Redirect to={this.props.redirect} />
                 );
             } else {
+                if(this.props.editing) {
+
+                }
                 return (
                     <div className="issue-shares-page">
                         <header className="issue-shares-header">
@@ -37,7 +63,8 @@ export class IssueShares extends React.Component {
                         </header>
                         <IssueSharesForm 
                             availableClasses={this.getAvailableClasses()} 
-                            onSubmit={this.handleSubmit.bind(this)} />
+                            onSubmit={this.handleSubmit.bind(this)}
+                            initialValues={this.props.initialValues} />
                     </div>
                 );
             }
@@ -51,8 +78,17 @@ export class IssueShares extends React.Component {
 
 const mapStateToProps = state => ({
     shareClasses: state.investment.companyData.shareClasses,
+    pendingInvestments: state.investment.investmentData.pending,
     redirect: state.investment.redirect,
-    isReady: state.investment.isReady
+    isReady: state.investment.isReady,
+    initialValues: state.investment.editing,
+    editingIndex: state.investment.editingIndex,
+    editingId: state.investment.editingId
 });
 
-export default connect(mapStateToProps)(IssueShares);
+const mapDispatchToProps = {
+    editInvestment,
+    issueShares
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(IssueShares);
