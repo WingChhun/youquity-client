@@ -1,7 +1,27 @@
 @import '../../../helpers/mixins/layout';
 @import '../../../helpers/mixins/setColors';
+@import '../../../helpers/vars/colors';
 
 .page-header {
     @include container;
     @include setColors(dark, light);
+    @include flex;
+    justify-content: space-around;
+}
+
+.main-heading-wrap {
+    .main-page-heading, .main-heading-logo {
+        font-size: 4em;
+    }
+}
+
+.main-page-heading {
+    margin: 0;
+    color: map-get($colors, light);
+}
+
+.main-page-subhead {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid map-get($colors, light);
 }

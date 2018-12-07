@@ -32,27 +32,32 @@ const links = {
     dashboard: {
         name: 'Dashboard',
         selected: true,
-        destination: '/'
+        destination: '/',
+        class: 'dashboard'
     },
     issueShares: {
         name: 'Issue Shares',
         selected: false,
-        destination: '/issueShares'
+        destination: '/issueShares',
+        class: 'issue-shares'
     },
     showIssued: {
-        name: 'Show Investments',
+        name: 'Completed Investments',
         selected: false,
-        destination: '/investmentListing'
+        destination: '/investmentListing',
+        class: 'show-issued'
     },
     showPending: {
-        name: 'Show Pending Investments',
+        name: 'Pending Investments',
         selected: false,
-        destination: '/pending'
+        destination: '/pending',
+        class: 'show-pending'
     },
     addShareClass: {
         name: 'Add Share Class',
         selected: false,
-        destination: '/addShareClass'
+        destination: '/addShareClass',
+        class: 'add-share-class'
     },
     logout: {
         name: 'Log Out',

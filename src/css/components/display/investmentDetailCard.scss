@@ -1,22 +1,54 @@
 @import '../../helpers/vars/colors';
 @import '../../helpers/mixins/setColors';
+@import '../../helpers/mixins/layout';
+@import '../../helpers/mixins/setBackground';
 
 .investment-detail-card {
-    margin: 15px 15px 0;
+    margin: 15px;
     border: 2px solid map-get($colors, dark);
-    padding: 15px;
-    &:last-child {
-        margin: 15px;
-    }
-    .detail-card-header,
-    .detail-card-footer {
-        padding: 15px;
-        background-color: map-get($colors, medium);
-        color: black;
-        @include setColors(medium, black);
-    }
-    .detail-card-header .detail-card-title {
-        font-size: 1.3em;
-        font-weight: bold;
-    }
+    flex-grow: 1;
+}
+
+.detail-card-header,
+.detail-card-footer {
+    background-color: map-get($colors, medium);
+}
+
+.detail-card-header {
+    @include flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: map-get($colors, semiLight);
+    border-bottom: 15px solid map-get($colors, medium);
+}
+
+.detail-card-footer {
+    @include container(false, false);
+}
+
+.detail-card-title, .detail-card-icon{
+    color: map-get($colors, dark);
+}
+
+.detail-card-icon-wrapper {
+    margin: 0 15px 0 0;
+    padding: 25px;
+    @include setBackground(dark, .5);
+    border-radius: 0 0 50% 0;
+}
+
+.detail-card-title {
+    flex-grow: 1;
+    margin: 5px auto;
+    font-size: 2em;
+    color: map-get($colors, dark);
+}
+
+.detail-card-icon {
+    font-size: 3em;
+    color: map-get($colors, light);
+}
+
+.card-details {
+    padding: 10px;
 }

@@ -4,8 +4,9 @@
 .investment-listing-table {
     @include container(true, true);
     .investment-listing-column-heading {
-        padding: 5px;
-        font-weight: bold;
+        padding: 15px;
+        font-size: 1.25em;
+        font-weight: 600;
         @include setColors(dark, light);
     }
 }

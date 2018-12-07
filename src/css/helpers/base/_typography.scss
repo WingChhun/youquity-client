@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import '../vars/colors';
+
+html,
+body {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.page-heading {
+    font-size: 3em;
+    color: map-get($colors, dark);
+    margin-bottom: .5em;
+    margin-top: 1em;
+}
+
+.strong {
+    font-weight: 700;
+}

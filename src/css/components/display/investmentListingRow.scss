@@ -3,10 +3,11 @@
 
 .investment-listing-row {
     @include setColors(white, dark);
+    font-size: 1.25em;
     .investment-listing-data {
-        padding: 5px;
+        padding: 15px;
     }
     &:nth-child(odd) {
-        background-color: map-get($colors, light);
+        background-color: map-get($colors, semiLight);
     }
 }

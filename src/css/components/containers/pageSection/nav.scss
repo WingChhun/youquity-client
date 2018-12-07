@@ -1,8 +1,69 @@
 @import '../../../helpers/mixins/layout';
 @import '../../../helpers/mixins/setColors';
 @import '../../../helpers/vars/colors';
-
 .top-nav {
-    @include container;
-    @include setColors(medium, dark);
+    @include setColors(dark, light);
+}
+
+/* styling for nav items */
+.menu-item {
+    padding: 15px 15px 15px 30px;
+    text-decoration: none;
+
+    &:active, &:hover, &:focus {
+        @include setColors(semiLight, dark);
+        border-left: 15px solid map-get($colors, dark);
+        padding-left: 15px;
+    }
+}
+
+/* copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+
+.bm-burger-bars {
+    background: map-get($colors, medium);
+}
+
+/* Position and sizing of clickable cross button */
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+/* Color/shape of close button cross */
+
+.bm-cross {
+    background: map-get($colors, dark);
+}
+
+/* General sidebar styles */
+
+.bm-menu {
+    background: map-get($colors, semiDark);
+    padding: 2.5em 1.5em 0 0;
+    font-size: 1.15em;
+}
+
+/* Wrapper for item list */
+
+.bm-item-list {
+    color: #b8b7ad;
+}
+
+/* Styling of overlay */
+
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.9);
 }

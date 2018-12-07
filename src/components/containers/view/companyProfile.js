@@ -40,11 +40,11 @@ export class CompanyProfile extends React.Component {
                 <div className="company-profile-wrapper">
                     <header className="company-profile-header">
                         <h2 className="page-heading">
-                            Company Dashboard
+                            {`${this.props.companyName} Dashboard`}
                         </h2>
                     </header>
                     <section>
-                        <ul>
+                        <ul className="company-summary-list">
                             {companySummary}
                         </ul>
                     </section>
