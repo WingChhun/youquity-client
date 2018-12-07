@@ -1,8 +1,4 @@
-import store from '../../store';
-
-export default function getCurrentSharePrice(classSlug) {    
-    const shareClasses = store.getState().investment.companyData.shareClasses;
-    
+export default function getCurrentSharePrice(classSlug, shareClasses) {        
     let result = false;
 
     shareClasses.forEach((shareClass) => {
