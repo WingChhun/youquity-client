@@ -57,6 +57,8 @@ describe('login', () => {
             expect(dispatch).toHaveBeenCalledWith(loginRequest());
             expect(dispatch).toHaveBeenCalledWith(initializeData());
             expect(dispatch).toHaveBeenCalledWith(loginSuccess(jwt, user));
+            expect(localStorage.getItem('jwt')).toEqual(jwt);
+            expect(localStorage.getItem('user')).toEqual(user);
         })
     });
 });
