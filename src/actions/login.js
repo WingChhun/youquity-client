@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 
 export const login = (data) => dispatch => {
     dispatch(loginRequest());
-    fetch(`${API_BASE_URL}/auth/login`, {
+    return fetch(`${API_BASE_URL}/auth/login`, {
         method: 'post',
         headers: new Headers({
             'Content-Type': 'application/json'
