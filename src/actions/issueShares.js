@@ -22,7 +22,7 @@ export const issueShares = (data, editingIndex, id, shareClasses) => dispatch =>
     const requestType = (data.certificateNum ? 'issued' : 'pending');
     let apiUrl = `${API_BASE_URL}/company/shares/${requestType}`;
     let apiMethod = 'post';
-    if(id && data.certificateNum) {
+    if(id && !data.certificateNum) {
         apiUrl += `/${id}`;
         apiMethod = 'put';
     }
