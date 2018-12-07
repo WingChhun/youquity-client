@@ -66,7 +66,8 @@ export function IssueSharesForm(props) {
         <form onSubmit={props.handleSubmit} className="form issue-shares-form">
             <Field 
                 name="shareType"
-                component={renderSelectField}>
+                component={renderSelectField}
+                label="Share Class">
                 {classOptionList}
             </Field>
             <Field 
