@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import DataListElement from '../../display/dataListElement';
 import InvestmentDetailCard from '../../display/investmentDetailCard';
+import Loading from '../../display/loadingDiv';
 
 import {clearRedirect} from '../../../actions';
 
@@ -55,8 +56,8 @@ export class CompanyProfile extends React.Component {
             );
         } else {
             return(
-                <div className="loading">Loading</div>
-            )
+                <Loading />
+            );
         }
     }
 }
