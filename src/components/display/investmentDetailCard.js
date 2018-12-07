@@ -1,4 +1,6 @@
 import React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons';
 
 import DataListElement from './dataListElement';
 
@@ -16,6 +18,9 @@ export default function InvestmentDetailCard(props) {
     return (
         <article className="investment-detail-card">
             <header className="detail-card-header">
+                <div className="detail-card-icon-wrapper">
+                    <FontAwesomeIcon icon={faHandHoldingUsd} className="detail-card-icon" />
+                </div>
                 <h3 className="detail-card-title">{props.title}</h3>
             </header>
             <section className="card-details">

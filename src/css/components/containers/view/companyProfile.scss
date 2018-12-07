@@ -1,6 +1,10 @@
-@import '../../../helpers/vars/colors';
+@import '../../../helpers/mixins/layout';
 
-.svg-inline--fa {
-    margin-left: 5px;
-    color: map-get($colors, medium);
+.company-summary-list {
+    margin: 0 15px;
 }
+.stock-types {
+    @include flex;
+    flex-wrap: wrap;
+}
+
