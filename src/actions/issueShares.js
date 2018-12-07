@@ -10,7 +10,7 @@ const jwt = localStorage.getItem('jwt');
 
 export const issueShares = (data, editingIndex, id, shareClasses) => dispatch => {
     dispatch(issueSharesRequest());
-    data = formatSharesRequest(data, null, shareClasses);    
+    data = formatSharesRequest(data, id, shareClasses);    
     if(id) {
         if(data.certificateNum) {
             // pending request has been finalized,
