@@ -1,4 +1,7 @@
 export default function formatPendingForEdit(pending) {
+    if(pending.mock) {
+        return pending;
+    }
     const date = new Date(pending.requestDate);
     date.setUTCHours(0);
     date.setUTCMinutes(0);

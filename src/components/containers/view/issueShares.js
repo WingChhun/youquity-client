@@ -42,7 +42,7 @@ export class IssueShares extends React.Component {
         if(params && params.investmentId) {
             this.props.issueShares(v, this.props.editingIndex, params.investmentId, this.props.shareClasses);
         } else {
-            this.props.issueShares(v, null, null);
+            this.props.issueShares(v, null, null, this.props.shareClasses);
         }
     }
 

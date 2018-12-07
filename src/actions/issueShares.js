@@ -10,7 +10,7 @@ const jwt = localStorage.getItem('jwt');
 
 export const issueShares = (data, editingIndex, id, shareClasses) => dispatch => {
     dispatch(issueSharesRequest());
-    data = formatSharesRequest(data, null, shareClasses);    
+    data = formatSharesRequest(data, id, shareClasses);    
     if(id) {
         if(data.certificateNum) {
             // pending request has been finalized,
@@ -22,12 +22,12 @@ export const issueShares = (data, editingIndex, id, shareClasses) => dispatch =>
     const requestType = (data.certificateNum ? 'issued' : 'pending');
     let apiUrl = `${API_BASE_URL}/company/shares/${requestType}`;
     let apiMethod = 'post';
-    if(id && data.certificateNum) {
+    if(id && !data.certificateNum) {
         apiUrl += `/${id}`;
         apiMethod = 'put';
     }
 
-    fetch(apiUrl, {
+    return fetch(apiUrl, {
         method: apiMethod,
         headers: new Headers({
             'Authorization': `Bearer ${jwt}`,
@@ -45,10 +45,12 @@ export const issueShares = (data, editingIndex, id, shareClasses) => dispatch =>
             if(requestType === 'pending') {
                 data.requestDate = formatDate(data.requestDate);
 
-            } else {
+            } else if(requestType === 'issued'){
                 data.issueDate = formatDate(data.issueDate);
                 data.pricePerShare = formatCurrency(data.pricePerShare);
                 data.purchaseDate = formatDate(data.purchaseDate);
+            } else {
+                
             }
             
             data.numShares = formatNumber(data.numShares);

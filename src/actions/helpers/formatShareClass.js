@@ -3,7 +3,9 @@ import prettifyBoolean from './prettifyBoolean';
 import formatCurrency from './formatCurrency';
 
 export default function formatShareClass(data) {
-    console.log(data);
+    if(data.mock) {
+        return data;
+    }
     return(
         {
             classSlug: data.classSlug,

@@ -6,7 +6,7 @@ export const deletePending = (idToDelete, indexToDelete) => dispatch => {
     dispatch(deletePendingRequest());
     const apiUrl = `${API_BASE_URL}/company/shares/pending/${idToDelete}`;
 
-    fetch(apiUrl, {
+    return fetch(apiUrl, {
         method: 'delete',
         headers: new Headers({
             'Authorization': `Bearer ${jwt}`,
