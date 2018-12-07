@@ -22,7 +22,8 @@ export const FIND_INVESTMENT_TO_EDIT_SUCCESS = 'FIND_INVESTMENT_TO_EDIT_SUCCESS'
 export const findInvestmentToEditSuccess = (investment, index, id) => ({
     type: FIND_INVESTMENT_TO_EDIT_SUCCESS,
     investment,
-    index
+    index,
+    id
 });
 
 export const FIND_INVESTMENT_TO_EDIT_FAILURE = 'FIND_INVESTMENT_TO_EDIT_FAILURE';
