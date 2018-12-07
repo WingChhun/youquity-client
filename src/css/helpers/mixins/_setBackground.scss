@@ -1,0 +1,6 @@
+@import '../vars/colors';
+
+@mixin setBackground($colorSlug, $opacity: 1) {
+    background: map-get($colors, $colorSlug); /* fallback */
+    background: rgba(map-get($colors, $colorSlug), $opacity);
+}
