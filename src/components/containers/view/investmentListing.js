@@ -30,7 +30,7 @@ export class InvestmentListing extends React.Component {
         return (
             <div className="investment-listing-wrapper">
                 <header className="investment-listing-header">
-                    <h2 className="page-heading">Listing of All Investments</h2>
+                    <h2 className="page-heading">Completed Investments</h2>
                 </header>
                 <table className="investment-listing-table">
                     <thead>
