@@ -9,6 +9,12 @@ import Loading from '../../display/loadingDiv';
 import '../../../css/components/containers/view/addShareClass.scss';
 
 export class AddShareClass extends React.Component {
+    constructor(...args) {
+        super(...args);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        console.log(this.props);
+    }
+
     handleSubmit(v) {
         this.props.dispatch(addShareClass(v));
     }
@@ -25,7 +31,7 @@ export class AddShareClass extends React.Component {
                             <h2 className="page-heading">Add Share Class</h2>
                         </header>
                         <AddShareClassForm
-                            onSubmit={this.handleSubmit.bind(this)} />
+                            onSubmit={this.handleSubmit} />
                     </div>
                 );
             }

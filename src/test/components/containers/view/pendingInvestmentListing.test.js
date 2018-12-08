@@ -1,7 +1,10 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {PendingInvestmentListing} from '../../../components/containers/view/pendingInvestmentListing';
+import { PendingInvestmentListing } from '../../../../components/containers/view/pendingInvestmentListing';
+
+import * as redirectFuncs from '../../../../actions';
+import InvestmentListingRow from '../../../../components/display/investmentListingRow';
 
 describe('<PendingInvestmentListing />', () => {
 
@@ -181,5 +184,22 @@ describe('<PendingInvestmentListing />', () => {
 
     it('Renders without crashing.', () => {
         shallow(<PendingInvestmentListing stockTypes={stockTypes} requests={requests} />);
+    });
+    it('Dispatches clearRedirect action on componentDidMount if it has a redirect prop', () => {
+        const spy = jest.spyOn(PendingInvestmentListing.prototype, 'componentDidMount');
+        redirectFuncs.clearRedirect = jest.fn();
+        const dispatch = jest.fn();
+        const wrapper = shallow(<PendingInvestmentListing redirect={true} dispatch={dispatch} />);
+        wrapper.instance().componentDidMount();
+        expect(spy).toHaveBeenCalled();
+        expect(dispatch).toHaveBeenCalledWith(redirectFuncs.clearRedirect());
+    });
+    it('Renders a list of pending stock', () => {
+        const wrapper = shallow(<PendingInvestmentListing 
+            stockTypes={stockTypes}
+            requests={requests}
+            isReady={true}
+        />);
+        expect(wrapper.find(InvestmentListingRow).length).toEqual(requests.length);
     });
 });
