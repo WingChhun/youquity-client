@@ -6,6 +6,12 @@
     margin: 15px;
     border: 2px solid map-get($colors, dark);
     flex-grow: 1;
+    @include flex(true);
+    justify-content: space-between;
+
+    @media only screen and (min-width: 500px) {
+        min-width: 400px;
+    }
 }
 
 .detail-card-header,
