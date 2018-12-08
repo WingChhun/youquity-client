@@ -13,8 +13,6 @@ import {LOGOUT} from '../actions/logout';
 import {FIND_INVESTMENT_TO_EDIT_FAILURE, FIND_INVESTMENT_TO_EDIT_SUCCESS} from '../actions/editInvestment';
 
 import { DELETE_PENDING_ERROR, DELETE_PENDING_REQUEST, DELETE_PENDING_SUCCESS } from '../actions/deletePending';
-import { stat } from 'fs';
-
 
 export const initialState = {
     companyData: {},

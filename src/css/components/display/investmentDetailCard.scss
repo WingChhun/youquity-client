@@ -2,7 +2,6 @@
 @import '../../helpers/mixins/setColors';
 @import '../../helpers/mixins/layout';
 @import '../../helpers/mixins/setBackground';
-
 .investment-detail-card {
     margin: 15px;
     border: 2px solid map-get($colors, dark);
@@ -26,7 +25,8 @@
     @include container(false, false);
 }
 
-.detail-card-title, .detail-card-icon{
+.detail-card-title,
+.detail-card-icon {
     color: map-get($colors, dark);
 }
 
@@ -42,11 +42,17 @@
     margin: 5px auto;
     font-size: 2em;
     color: map-get($colors, dark);
+    @media only screen and (max-width: 600px) {
+        font-size: 1.5em;
+    }
 }
 
 .detail-card-icon {
     font-size: 3em;
     color: map-get($colors, light);
+    @media only screen and (max-width: 600px) {
+        font-size: 1.5em;
+    }
 }
 
 .card-details {

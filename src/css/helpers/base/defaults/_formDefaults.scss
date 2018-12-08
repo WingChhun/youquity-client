@@ -6,6 +6,12 @@
     @include container(true, false, dark, 3px);
     border-radius: 10px;
     @include setBackground(semiLight, .5);
+    max-width: 80vw;
+    margin: 0 auto;
+
+    @media only screen and (max-width: 600px) {
+        max-width: 90vw;
+    }
 }
 
 .field {
@@ -104,4 +110,11 @@
     @include setBackground(dark, .25);
     font-size: 1.5em;
     line-height: 1.5em;
+
+    @media only screen and (max-width:600px)
+     {
+         padding: 10px;
+         font-size: 1em;
+         line-height: 1.2em;
+     }
 }

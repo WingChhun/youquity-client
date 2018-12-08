@@ -3,10 +3,20 @@
 
 .investment-listing-table {
     @include container(true, true);
+    overflow-x: auto;
     .investment-listing-column-heading {
         padding: 15px;
         font-size: 1.25em;
         font-weight: 600;
         @include setColors(dark, light);
+
+        @media only screen and (max-width: 800px) {
+            padding:5px;
+            font-size: 1em;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        overflow-y: hidden
     }
 }

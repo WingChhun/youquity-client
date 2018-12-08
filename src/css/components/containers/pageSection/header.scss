@@ -12,6 +12,9 @@
 .main-heading-wrap {
     .main-page-heading, .main-heading-logo {
         font-size: 4em;
+        @media only screen and (max-width: 600px) {
+            font-size: 3em;
+        }
     }
 }
 

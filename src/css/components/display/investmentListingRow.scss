@@ -1,11 +1,14 @@
 @import '../../helpers/mixins/setColors';
 @import '../../helpers/vars/colors';
-
 .investment-listing-row {
     @include setColors(white, dark);
     font-size: 1.25em;
     .investment-listing-data {
         padding: 15px;
+        @media only screen and (max-width: 800px) {
+            padding: 5px;
+            font-size: .8em;
+        }
     }
     &:nth-child(odd) {
         background-color: map-get($colors, semiLight);
