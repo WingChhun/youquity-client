@@ -76,7 +76,6 @@ Please note, you may also need to modify the API_BASE_URL config variable to con
 
 * [Travis CI](https://travis-ci.org/) - Continuous Integration
 * [Heroku](https://www.heroku.com) - Cloud Deployment
-* [mLab](https://mlab.com) - Database-as-a-Service for MongoDB
 
 ## Author
 
@@ -85,3 +84,29 @@ Please note, you may also need to modify the API_BASE_URL config variable to con
 ## License
 
 This project is licensed under the MIT License.
+
+## Screenshots
+
+[!login page screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/login-page.PNG)
+
+[!company dashboard screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/company-dashboard.PNG)
+
+[!completed investment listing screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/completed-investments-listing.PNG)
+
+[!pending investment listing screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/pending-investments-listing.PNG)
+
+[!issue shares form screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/issue-shares-form.PNG)
+
+[!editing pending investment screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/editing-pending-investment.PNG)
+
+[!add share class form screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/add-share-class-form.PNG)
+
+[!menu panel screenshot]
+(https://github.com/amandareilly/youquity-client/blob/master/screenshots/open-menu-panel.PNG)
