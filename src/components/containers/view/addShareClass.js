@@ -12,7 +12,6 @@ export class AddShareClass extends React.Component {
     constructor(...args) {
         super(...args);
         this.handleSubmit = this.handleSubmit.bind(this);
-        console.log(this.props);
     }
 
     handleSubmit(v) {

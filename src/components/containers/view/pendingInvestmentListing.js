@@ -24,7 +24,6 @@ export class PendingInvestmentListing extends React.Component {
     render() {
         if(this.props.isReady) {
             const stockTypes = this.mapClassSlugToName();
-            console.log(this.props.requests);
             const rows = this.props.requests.map((cert, i) => {
                 cert.shareClass = stockTypes[cert.shareClassSlug];
                 return (<InvestmentListingRow key={i} data={cert} />);

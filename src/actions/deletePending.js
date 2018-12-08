@@ -13,7 +13,6 @@ export const deletePending = (idToDelete, indexToDelete) => dispatch => {
         })
     })
         .then((res) => {
-            console.log('got response from delete request');
             if (!res.ok) {
                 return Promise.reject(res.statusText);
             }

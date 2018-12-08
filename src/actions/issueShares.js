@@ -14,8 +14,7 @@ export const issueShares = (data, editingIndex, id, shareClasses) => dispatch =>
     if(id) {
         if(data.certificateNum) {
             // pending request has been finalized,
-            // need to delete from pending 
-            console.log('has editing index and certificate num so delete pending action should be called');
+            // need to delete from pending pending action should be called');
             dispatch(deletePending(id, editingIndex));
         }
     }

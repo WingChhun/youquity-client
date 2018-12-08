@@ -39,7 +39,6 @@ describe('deletePending', () => {
         };
 
         global.fetch = jest.fn().mockImplementation(() => {
-            console.log('inside fetch');
             return Promise.resolve({
                 ok: true,
                 json() {

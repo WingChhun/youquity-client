@@ -33,7 +33,6 @@ describe('addShareClass', () => {
         const mockData = { mock: true };
 
         global.fetch = jest.fn().mockImplementation(() => {
-            console.log('inside fetch');
             return Promise.resolve({
                 ok: true,
                 json() {

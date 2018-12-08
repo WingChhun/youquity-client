@@ -42,7 +42,6 @@ describe('login', () => {
         const expectedHeaders = {"body": "{\"email\":\"test@test.test\",\"password\":\"testing123\"}", "headers": {"map": {"content-type": "application/json"}}, "method": "post"};
 
         global.fetch = jest.fn().mockImplementation(() => {
-            console.log('inside fetch');
             return Promise.resolve({
                 ok: true,
                 json() {
