@@ -5,7 +5,9 @@ import { renderInputField } from './renderField';
 
 import '../../css/components/forms/addShareClassForm.scss';
 
-const validate = function(val) {
+const validate = function(val, props) {
+    console.log(val);
+    console.log(props);
     const errors = {};
     if(!val.className) {
         errors.className = 'Required';
@@ -25,7 +27,7 @@ const validate = function(val) {
         errors.reservedShares = 'Required (can be 0)';
     } else if(isNaN(Number(val.reservedShares))) {
         errors.reservedShares = 'Reserved Shares must be a number (can be 0).';
-    } else if(val.reservedShares > val.authorizedShares) {
+    } else if(Number(val.reservedShares) > Number(val.authorizedShares)) {
         errors.reservedShares = 'Reserved Shares cannot be greater than Authorized Shares.';
     }
 
