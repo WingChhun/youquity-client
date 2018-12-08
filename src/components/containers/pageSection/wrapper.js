@@ -18,12 +18,13 @@ export class Wrapper extends React.Component {
         }
     }
     render() {
+        console.log(this.props.jwt);
         return (
             <Router>
                 <div className="wrapper">
                     <Nav />
                     <Header />
-                    <Main />
+                    <Main jwt={this.props.jwt}/>
                     <Footer />
                 </div>
             </Router>
@@ -32,7 +33,7 @@ export class Wrapper extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    jwt: state.investment.jwt
+    jwt: state.investment.jwt,
 });
 
 const mapDispatchToProps = {
