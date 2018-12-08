@@ -23,7 +23,10 @@ export function LoginForm(props) {
 
     return (
         <form onSubmit={props.handleSubmit} className="form login-form">
-            
+            <div className="form-instructions">
+                <span className="strong">Demo User:</span> test@test.test<br />
+                <span className="strong">Password:</span> testing123
+            </div>
             <Field
                 name="email"
                 component={renderInputField}
