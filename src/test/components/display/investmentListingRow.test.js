@@ -15,8 +15,8 @@ describe('<InvestmentListingRow />', () => {
     it('Renders without crashing.', () => {
         shallow(<InvestmentListingRow data={data}/>);
     });
-    it('renders a table row with the class investment-listing-row', () => {
+    it('renders a div with the class investment-listing-row-wrapper', () => {
         const wrapper = shallow(<InvestmentListingRow data={data} />);
-        expect(wrapper.hasClass('investment-listing-row')).toEqual(true);
+        expect(wrapper.hasClass('investment-listing-row-wrapper')).toEqual(true);
     });
 });
