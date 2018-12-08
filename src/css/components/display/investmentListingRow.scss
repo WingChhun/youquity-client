@@ -1,16 +1,43 @@
 @import '../../helpers/mixins/setColors';
 @import '../../helpers/vars/colors';
-.investment-listing-row {
+.investment-listing-row-wrapper {
     @include setColors(white, dark);
     font-size: 1.25em;
-    .investment-listing-data {
-        padding: 15px;
-        @media only screen and (max-width: 800px) {
-            padding: 5px;
-            font-size: .8em;
-        }
-    }
     &:nth-child(odd) {
         background-color: map-get($colors, semiLight);
+    }
+}
+
+.investment-listing-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 50px;
+    &.issued {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.investment-listing-header-column {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .investment-listing-row-wrapper {
+        display: flex;
+    }
+    .investment-listing-header-column,
+    .investment-listing-row {
+        display: block;
+    }
+}
+
+.investment-listing-data {
+    padding: 15px;
+    @media only screen and (max-width: 800px) {
+        padding: 5px;
+        font-size: .8em;
+    }
+    @media only screen and (max-width: 600px) {
+        padding: 10px;
+        text-align: left;
     }
 }

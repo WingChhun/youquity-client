@@ -1,22 +1,41 @@
 @import '../../../helpers/mixins/layout';
 @import '../../../helpers/mixins/setColors';
+@import '../../../helpers/vars/colors';
 
 .investment-listing-table {
     @include container(true, true);
-    overflow-x: auto;
     .investment-listing-column-heading {
         padding: 15px;
         font-size: 1.25em;
         font-weight: 600;
         @include setColors(dark, light);
-
         @media only screen and (max-width: 800px) {
             padding:5px;
             font-size: 1em;
         }
-    }
 
-    @media only screen and (max-width: 768px) {
-        overflow-y: hidden
+        @media only screen and (max-width: 600px) {
+            font-size: .8em;
+            font-weight: 500;
+            text-align: right;
+            padding: 10px;
+            &:last-child {
+                min-height: calc(.8em + 20px);
+                padding-bottom: 8px;
+                border-bottom: 2px solid map-get($colors, white);
+            }
+        }
+    }
+    .investment-listing-header-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr) 50px;
+
+        &.issued {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media only screen and(max-width: 600px) {
+            display: none;
+        }
     }
 }

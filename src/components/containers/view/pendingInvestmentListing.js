@@ -34,20 +34,16 @@ export class PendingInvestmentListing extends React.Component {
                     <header className="investment-listing-header">
                         <h2 className="page-heading">Pending Investments</h2>
                     </header>
-                    <table className="investment-listing-table">
-                        <thead>
-                            <tr className="investment-listing-header-row">
-                                <th className="investment-listing-column-heading">Shareholder</th>
-                                <th className="investment-listing-column-heading">Number of Shares</th>
-                                <th className="investment-listing-column-heading">Request Date</th>
-                                <th className="investment-listing-column-heading">Stock Class</th>
-                                <th className="investment-listing-column-heading"> </th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div className="investment-listing-table">
+                            <div className="investment-listing-header-row pending">
+                                <div className="investment-listing-column-heading">Shareholder</div>
+                                <div className="investment-listing-column-heading">Number of Shares</div>
+                                <div className="investment-listing-column-heading">Request Date</div>
+                                <div className="investment-listing-column-heading">Stock Class</div>
+                                <div className="investment-listing-column-heading"> </div>
+                            </div>
                             {rows}
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             );
         } else {
