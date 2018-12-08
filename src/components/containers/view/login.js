@@ -36,7 +36,8 @@ export class Login extends React.Component {
                         </div>
                     </header>
                     <LoginForm 
-                        onSubmit={this.handleSubmit} />
+                        onSubmit={this.handleSubmit}
+                        loading={this.props.loading} />
                 </div>
             )
         }
@@ -44,7 +45,8 @@ export class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    jwt: state.investment.jwt
+    jwt: state.investment.jwt,
+    loading: state.investment.loading
 });
 
 export default connect(mapStateToProps)(Login);

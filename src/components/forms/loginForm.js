@@ -20,7 +20,7 @@ const validate = function (val) {
 }
 
 export function LoginForm(props) {
-
+    const buttonClass = (props.loading ? 'button is-link loading' : 'button is-link');
     return (
         <form onSubmit={props.handleSubmit} className="form login-form">
             <div className="form-instructions">
@@ -39,7 +39,7 @@ export function LoginForm(props) {
                 label="Password" />
             <div className="field">
                 <div className="control">
-                    <button className="button is-link">Submit</button>
+                    <button className={buttonClass}>Submit</button>
                 </div>
             </div>
         </form>

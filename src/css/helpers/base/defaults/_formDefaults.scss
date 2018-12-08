@@ -54,6 +54,10 @@
     font-size: 1.25em;
     @include setColors(dark, light);
     border: none;
+    cursor: pointer;
+    &.loading {
+        @include setColors(gray, dark);
+    }
 }
 
 .form-field-error {

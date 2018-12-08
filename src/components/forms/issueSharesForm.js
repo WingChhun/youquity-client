@@ -62,7 +62,7 @@ export function IssueSharesForm(props) {
     classOptionList.unshift(
         <option key="none" value="null">Select a Class</option>
     );
-
+    const buttonClass = (props.loading ? 'button is-link loading' : 'button is-link');
     return (
         <form onSubmit={props.handleSubmit} className="form issue-shares-form">
             <div className="form-instructions">
@@ -111,7 +111,7 @@ export function IssueSharesForm(props) {
                 label="Certificate Number" />
             <div className="field">
                 <div className="control">
-                    <button className="button is-link">Submit</button>
+                    <button className={buttonClass}>Submit</button>
                 </div>
             </div>
         </form>

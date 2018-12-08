@@ -64,7 +64,8 @@ export class IssueShares extends React.Component {
                         <IssueSharesForm 
                             availableClasses={this.getAvailableClasses()} 
                             onSubmit={this.handleSubmit.bind(this)}
-                            initialValues={this.props.initialValues} />
+                            initialValues={this.props.initialValues}
+                            loading={this.props.loading} />
                     </div>
                 );
             }
@@ -83,7 +84,8 @@ const mapStateToProps = state => ({
     isReady: state.investment.isReady,
     initialValues: state.investment.editing,
     editingIndex: state.investment.editingIndex,
-    editingId: state.investment.editingId
+    editingId: state.investment.editingId,
+    loading: state.investment.loading
 });
 
 const mapDispatchToProps = {

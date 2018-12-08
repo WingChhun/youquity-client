@@ -30,7 +30,7 @@ export class AddShareClass extends React.Component {
                             <h2 className="page-heading">Add Share Class</h2>
                         </header>
                         <AddShareClassForm
-                            onSubmit={this.handleSubmit} />
+                            onSubmit={this.handleSubmit} loading={this.props.loading} />
                     </div>
                 );
             }
@@ -45,7 +45,8 @@ export class AddShareClass extends React.Component {
 const mapStateToProps = state => ({
     shareClasses: state.investment.companyData.shareClasses,
     redirect: state.investment.redirect,
-    isReady: state.investment.isReady
+    isReady: state.investment.isReady,
+    loading: state.investment.loading
 });
 
 export default connect(mapStateToProps)(AddShareClass);

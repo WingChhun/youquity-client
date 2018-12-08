@@ -41,6 +41,7 @@ const validate = function(val, props) {
 };
 
 export function AddShareClassForm(props) {
+    const buttonClass = (props.loading ? 'button is-link loading' : 'button is-link');
     return (
         <form onSubmit={props.handleSubmit} className="form add-share-class-form">
             <Field
@@ -72,7 +73,7 @@ export function AddShareClassForm(props) {
                 label="Currently Offered" />
             <div className="field">
                 <div className="control">
-                    <button className="button is-link">Submit</button>
+                    <button className={buttonClass}>Submit</button>
                 </div>
             </div>
         </form>
