@@ -9,6 +9,10 @@ import LoginForm from '../../forms/loginForm'
 import '../../../css/components/containers/view/login.scss';
 
 export class Login extends React.Component {
+    constructor(...args) {
+        super(...args);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
     handleSubmit(v) {
         this.props.dispatch(login(v));
     }
@@ -25,7 +29,7 @@ export class Login extends React.Component {
                         <h2 className="page-heading">Log In</h2>
                     </header>
                     <LoginForm 
-                        onSubmit={this.handleSubmit.bind(this)} />
+                        onSubmit={this.handleSubmit} />
                 </div>
             )
         }

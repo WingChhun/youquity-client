@@ -1,9 +1,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {InvestmentListing} from '../../../components/containers/view/investmentListing';
+import { IssueShares } from '../../../../components/containers/view/issueShares';
 
-const stockTypes = [
+import IssueSharesForm from '../../../../components/forms/issueSharesForm';
+import {Redirect} from 'react-router-dom';
+
+const shareClasses = [
     {
         classSlug: 'classA',
         className: 'Class A',
@@ -93,68 +96,53 @@ const stockTypes = [
     },
 ];
 
-
-const investmentListingData = [
-        {
-            certNum: 1,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Preferred'
-        },
-        {
-            certNum: 2,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Preferred'
-        },
-        {
-            certNum: 3,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Class A'
-        },
-        {
-            certNum: 4,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Class A'
-        },
-        {
-            certNum: 5,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Class A'
-        },
-        {
-            certNum: 6,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Class A'
-        },
-        {
-            certNum: 7,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Preferred'
-        },
-        {
-            certNum: 8,
-            certTitle: 'Bob Shareholder',
-            numShares: '10,000',
-            purchaseDate: '1/1/18',
-            shareClass: 'Class A'
-        },
-    ];
-
-describe('<InvestmentListing />', () => {
+describe('<IssueShares />', () => {
+    const match = { params: { investmentId: 1 } };
     it('Renders without crashing.', () => {
-        shallow(<InvestmentListing certificates={investmentListingData} stockTypes={stockTypes} />);
+        shallow(<IssueShares shareClasses={shareClasses}/>);
     });
+    it('Dispatches editInvestment on componentDidMount if it has an investmentId param', () => {
+        const editInvestment = jest.fn();
+        const pendingInvestments = [];
+        const wrapper = shallow(<IssueShares
+            match={match}
+            editInvestment={editInvestment}
+            pendingInvestments={pendingInvestments}
+        />);
+        expect(editInvestment).toHaveBeenCalledWith(match.params.investmentId, pendingInvestments);
+    });
+    it('Dispatches issueShares with correct arguments on form submit', () => {
+        const issueShares = jest.fn();
+        const wrapper = shallow(<IssueShares
+            issueShares={issueShares}
+            shareClasses={shareClasses}            
+        />);
+        wrapper.instance().handleSubmit('x');
+        expect(issueShares).toHaveBeenCalledWith('x', null, null, shareClasses);
+        const newIssueShares = jest.fn();
+        const editInvestment = jest.fn();
+        const newWrapper = shallow(<IssueShares 
+            match={match}
+            editingIndex='1'
+            shareClasses={shareClasses}
+            editInvestment={editInvestment}
+            issueShares={newIssueShares}
+        />);
+        newWrapper.instance().handleSubmit('x');
+        expect(newIssueShares).toHaveBeenCalledWith('x', '1', match.params.investmentId, shareClasses);
+    });
+    it('renders the issue shares form', () => {
+        const wrapper = shallow(<IssueShares 
+            isReady={true}
+            shareClasses={shareClasses}
+        />);
+        expect(wrapper.find(IssueSharesForm).length).toBe(1);
+    });
+    it('redirects if it gets a redirect prop', () => {
+        const wrapper = shallow(<IssueShares 
+            isReady={true}
+            redirect='/'
+        />);
+        expect(wrapper.find(Redirect).length).toBe(1);
+    })
 });

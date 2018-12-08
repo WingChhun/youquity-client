@@ -1,7 +1,10 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {CompanyProfile} from '../../../components/containers/view/companyProfile';
+import { CompanyProfile } from '../../../../components/containers/view/companyProfile';
+
+import * as redirectFuncs from '../../../../actions';
+import InvestmentDetailCard from '../../../../components/display/investmentDetailCard';
 
 describe('<CompanyProfile />', () => {
     const summaryData = [
@@ -111,5 +114,18 @@ describe('<CompanyProfile />', () => {
 
     it('Renders without crashing.', () => {
         shallow(<CompanyProfile summaryData={summaryData} stockTypes={stockTypes} />);
+    });
+    it('Dispatches clearRedirect action on componentDidMount if it has a redirect prop', () => {
+        const spy = jest.spyOn(CompanyProfile.prototype, 'componentDidMount');
+        redirectFuncs.clearRedirect = jest.fn();
+        const dispatch = jest.fn();
+        const wrapper = shallow(<CompanyProfile redirect={true} dispatch={dispatch} />);
+        wrapper.instance().componentDidMount();
+        expect(spy).toHaveBeenCalled();
+        expect(dispatch).toHaveBeenCalledWith(redirectFuncs.clearRedirect());
+    });
+    it('Renders Investment detail cards for each stock type', () => {
+        const wrapper = shallow(<CompanyProfile summaryData={summaryData} stockTypes={stockTypes} isReady={true} />);
+        expect(wrapper.find(InvestmentDetailCard).length).toBe(stockTypes.length);
     });
 });
